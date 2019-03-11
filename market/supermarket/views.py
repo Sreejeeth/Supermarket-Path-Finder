@@ -5,5 +5,4 @@ from django.shortcuts import render, redirect
 #from sirmvit.models import Studentdbs,Category
 from django.shortcuts import render, get_object_or_404
 
-
 # Create your views here.
