@@ -50,6 +50,9 @@ from os import path
 from supermarket.settings2 import *
 from supermarket.sprites import *
 from supermarket.tilemap import *
+from tkinter import *
+from tkinter import messagebox
+
 
 @login_required
 def home(request):
@@ -95,7 +98,7 @@ class Game:
         self.clock = pg.time.Clock()
         self.load_data()
 
-    # 
+
 
     def load_data(self):
         game_folder = path.dirname(__file__)
@@ -125,7 +128,7 @@ class Game:
             if tile_object.name == 'wall':
                 Obstacle(self, tile_object.x, tile_object.y,
                          tile_object.width, tile_object.height)  
-            if tile_object.name in ['item1', 'item2','item3', 'item4']:
+            if tile_object.name in [ 'item2','item3', 'item4']:
                 Item(self, obj_center, tile_object.name)  
         self.camera = Camera(self.map.width, self.map.height)
         self.draw_debug = False
@@ -146,7 +149,10 @@ class Game:
         pg.quit()
         sys.exit()
 
-
+    def donothing():
+        filewin = Toplevel(root)
+        button = Button(filewin, text="Do nothing button")
+        button.pack()    
 
     def update(self):
         # update portion of the game loop
@@ -155,23 +161,167 @@ class Game:
         hits = pg.sprite.spritecollide(self.player, self.items, False)
         
         for hit in hits:
-            if hit.type == 'item1dup':
-                hit.type='item1'
-                hit.kill()         
-            if hit.type == 'item2dup':
-                hit.type='item2'
-                hit.kill()
+            # if hit.type == 'item1':
+                # pg.event.get()
+                # if event.key==pygame.K_KP_ENTER:
+                # if pg.key.get_pressed()[K_KP_ENTER]:
+                # for event in pg.event.get():
+                #     if event.type == pg.:
+                        # if event.key == pg.K_p:
+                        #     self.paused = not self.paused     
+            # if hit.type == 'item2':
+                
+            #     # print("hits")
+                
+            #     window=Tk()
+                
+            #     window.withdraw()
 
-            if hit.type == 'item3dup':
-                hit.type='item3'
-                hit.kill()
+            #     if messagebox.askyesno('Question','do you want to add it')==True:
+            #         print('yes')
+            #         ans='yes'
 
-            if hit.type == 'item4dup':
-                hit.type='item4'
-                hit.kill() 
-            if hit.type=='item1':
-                hit.kill()                                                                                         # removes items 
-                                                                                                   # removes items 
+            #     else:
+            #         print('no')
+            #         ans='no'
+
+            #     window.deiconify()
+            #     window.destroy()
+            #     window.quit()
+
+            #     if ans=='yes':
+            #         hit.kill()
+            #     else:
+            #         hit.type='asasas'
+
+
+            # if hit.type == 'item3':
+            #     # hit.type='item3'
+               
+            #     window=Tk()
+                
+            #     window.withdraw()
+
+            #     if messagebox.askyesno('Question','do you want to add it')==True:
+            #         print('yes')
+            #         ans='yes'
+
+            #     else:
+            #         print('no')
+            #         ans='no'
+
+            #     window.deiconify()
+            #     window.destroy()
+            #     window.quit()
+
+            #     if ans=='yes':
+            #         hit.kill()
+            #     else:
+            #         hit.type='asasas'
+
+
+            # if hit.type == 'item4':
+            #     window=Tk()
+                
+            #     window.withdraw()
+
+            #     if messagebox.askyesno('Question','do you want to add it')==True:
+            #         print('yes')
+            #         ans='yes'
+
+            #     else:
+            #         print('no')
+            #         ans='no'
+
+            #     window.deiconify()
+            #     window.destroy()
+            #     window.quit()
+
+            #     if ans=='yes':
+            #         hit.kill()
+            #     else:
+            #         hit.type='asasas'                                                                                  # removes items 
+            #     
+
+            if hit.type == 'item2':
+                
+                # print("hits")
+                
+                window=Tk()
+                
+                window.withdraw()
+
+                if messagebox.askyesno('Question','do you want to add it')==True:
+                    print('yes')
+                    ans='yes'
+
+                else:
+                    print('no')
+                    ans='no'
+
+                window.deiconify()
+                window.destroy()
+                window.quit()
+
+                if ans=='yes':
+                    hit.kill()
+                else:
+                    # pass
+                    # break
+                    # pg.time.delay(2000)
+                    hit.type='asasas'
+
+
+            if hit.type == 'item3':
+                # hit.type='item3'
+               
+                window=Tk()
+                
+                window.withdraw()
+
+                if messagebox.askyesno('Question','do you want to add it')==True:
+                    print('yes')
+                    ans='yes'
+
+                else:
+                    print('no')
+                    ans='no'
+
+                window.deiconify()
+                window.destroy()
+                window.quit()
+
+                if ans=='yes':
+                    hit.kill()
+                else:
+                    hit.type='asasas'
+
+
+            if hit.type == 'item4':
+                window=Tk()
+                
+                window.withdraw()
+
+                if messagebox.askyesno('Question','do you want to add it')==True:
+                    print('yes')
+                    ans='yes'
+
+                else:
+                    print('no')
+                    ans='no'
+
+                window.deiconify()
+                window.destroy()
+                window.quit()
+
+                if ans=='yes':
+                    hit.kill()
+                else:
+                    hit.type='asasas'                                                                                  # removes items 
+                
+
+
+                                                                                               # removes items 
                 
     # def draw_grid(self):
     #     for x in range(0, WIDTH, TILESIZE):
