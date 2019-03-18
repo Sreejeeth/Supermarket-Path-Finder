@@ -80,20 +80,16 @@ EFFECTS_LAYER = 4
 ITEMS_LAYER = 1
 
 # Items
-ITEM_IMAGES = {'health': 'health_pack.png',
-               'shotgun': 'obj_shotgun.png'}
+ITEM_IMAGES = {'item1': 'health_pack.png',
+               'item2': 'bullet.png',
+               'item3': 'health_pack.png',
+               'item4': 'bullet.png',
+               'item1dup': 'health_pack.png',
+               'item2dup': 'bullet.png',
+               'item3dup': 'health_pack.png',
+               'item4dup': 'bullet.png'}
 HEALTH_PACK_AMOUNT = 20
 BOB_RANGE = 10
 BOB_SPEED = 0.3
 
-# Sounds
-BG_MUSIC = 'espionage.ogg'
-PLAYER_HIT_SOUNDS = ['pain/8.wav', 'pain/9.wav', 'pain/10.wav', 'pain/11.wav']
-ZOMBIE_MOAN_SOUNDS = ['brains2.wav', 'brains3.wav', 'zombie-roar-1.wav', 'zombie-roar-2.wav',
-                      'zombie-roar-3.wav', 'zombie-roar-5.wav', 'zombie-roar-6.wav', 'zombie-roar-7.wav']
-ZOMBIE_HIT_SOUNDS = ['splat-15.wav']
-WEAPON_SOUNDS = {'pistol': ['pistol.wav'],
-                 'shotgun': ['shotgun.wav']}
-EFFECTS_SOUNDS = {'level_start': 'level_start.wav',
-                  'health_up': 'health_pack.wav',
-                  'gun_pickup': 'gun_pickup.wav'}
+# Sounds0

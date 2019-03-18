@@ -17,10 +17,41 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
+#from .views import home, register
 from supermarket import views as core_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^$', core_views.home, name='home'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+   # url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+   url(r'^logout/$', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
+     url(r'^logout/$', auth_views.LogoutView, {'next_page': 'login'}, name='logout'),
+    # url(r'^logout/$',
+    # auth_views.LogoutView,
+    # {'next_page': reverse_lazy("dashboard:operations_login")},
+    # name="operations_logout"),
+    url(r'^signup/$', core_views.signup, name='signup'),
+
+
+
+    url(r'^home2/', core_views.help ,name='home2'),
+    url(r'^admin/', admin.site.urls),
 ]
+# urlpatterns = [
+#     url(r'^$',core_views.front, name='front'),
+#     url(r'home', core_views.home, name='home'),
+#     # url(r'^register/', register),
+#     # url(r'^login/$', auth_views.LoginView),
+#     url(r'^signup/$', core_views.signup, name='signup'),
+#     #url(r'^login/$', auth_views.LoginView, {'template_name': 'login.html'})
+    # url(r'^logout/$', auth_views.logout)
+    #url(r'^', include('supermarket.urls'))
+    # url(r'^accounts/login/$', auth_views.LoginView, {'template_name': 'login.html'}, name='login'),
+    # #url( r'^account/login/$',auth_views.LoginView.as_view(template_name="login.html"), name="login"),
+    # url(r'^logout/$', auth_views.LogoutView, {'next_page': 'login'}, name='logout'),
+    # url(r'^signup/$', core_views.signup, name='signup'),
+    # url(r'^admin/', admin.site.urls),
+    

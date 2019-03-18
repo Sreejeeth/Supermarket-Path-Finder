@@ -4,7 +4,7 @@ import pygame as pg
 import sys
 from random import choice, random
 from os import path
-from settings import *
+from settings2 import *
 from sprites import *
 from tilemap import *
 
@@ -12,18 +12,18 @@ from tilemap import *
 
 class Game:
     def __init__(self):
-        pg.mixer.pre_init(44100, -16, 4, 2048)
-        pg.init()
-        self.screen = pg.display.set_mode((WIDTH+500, HEIGHT))
+        # pg.mixer.pre_init(44100, -16, 4, 2048)
+        # pg.init()
+        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
 
-    def draw_text(self, text, font_name, size, color, x, y, align="topleft"):
-        font = pg.font.Font(font_name, size)
-        text_surface = font.render(text, True, color)
-        text_rect = text_surface.get_rect(**{align: (x, y)})
-        self.screen.blit(text_surface, text_rect)
+    # def draw_text(self, text, font_name, size, color, x, y, align="topleft"):
+    #     font = pg.font.Font(font_name, size)
+    #     text_surface = font.render(text, True, color)
+    #     text_rect = text_surface.get_rect(**{align: (x, y)})
+    #     self.screen.blit(text_surface, text_rect)
 
     def load_data(self):
         game_folder = path.dirname(__file__)
@@ -68,6 +68,7 @@ class Game:
     def quit(self):
         pg.quit()
         sys.exit()
+        self.playing = False
 
     def update(self):
         # update portion of the game loop

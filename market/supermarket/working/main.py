@@ -146,9 +146,10 @@ class Game:
             self.playing = False
         # player hits items
         hits = pg.sprite.spritecollide(self.player, self.items, False)
+        print("hits=", hits)
         for hit in hits:
             if hit.type == 'health' and self.player.health < PLAYER_HEALTH:
-                hit.kill()
+                hit.kill()                                                                                      # removes items 
                 self.effects_sounds['health_up'].play()
                 self.player.add_health(HEALTH_PACK_AMOUNT)
             if hit.type == 'shotgun':

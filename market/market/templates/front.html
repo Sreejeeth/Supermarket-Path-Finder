@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Mvit.com{% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static "css/base.css" % }"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+<style >
+.wrapper {
+    text-align: center;
+}
+.button {
+    position: absolute;
+    top: 50%;
+}
+body
+{
+    background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg");
+    /* background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png"); */
+    background-repeat:no-repeat;
+    background-size:150%;
+}
+em {      font-size: 200%;     }
+</style>
+<body>
+<h1 class ="wrapper" style="color:#ffffff"><em>Student Information Portal</em></h1>
+<div class="wrapper">
+  <a href="{% url "home" %}">
+  <button class="btn waves-effect waves-light button" type="submit" name="action">Get started
+  </button></a>
+</div>
+</body>
+</html>

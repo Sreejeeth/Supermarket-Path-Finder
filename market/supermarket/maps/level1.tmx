@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="187">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="192">
  <tileset firstgid="1" name="spritesheet_tiles" tilewidth="64" tileheight="64" spacing="10" tilecount="540" columns="27">
   <image source="../img/spritesheet_tiles.png" width="1988" height="1470"/>
  </tileset>
@@ -232,10 +232,14 @@
   <object id="180" name="zombie" x="944" y="1344" width="32" height="32"/>
   <object id="181" name="zombie" x="928" y="1472" width="32" height="32"/>
   <object id="182" name="zombie" x="576" y="1424" width="32" height="32"/>
-  <object id="183" name="item1" x="204" y="402" width="32" height="32"/>
-  <object id="184" name="item2" x="205" y="462" width="32" height="32"/>
-  <object id="185" name="item3" x="207" y="523" width="32" height="32"/>
-  <object id="186" name="item4" x="207" y="588" width="32" height="32"/>
+  <object id="184" name="item1" x="204" y="398.667" width="32" height="32"/>
+  <object id="185" name="item2" x="200" y="514.667" width="32" height="32"/>
+  <object id="186" name="item3" x="201.333" y="585.333" width="32" height="32"/>
+  <object id="187" name="item4" x="204" y="642.667" width="32" height="32"/>
+  <object id="188" name="item1dup" x="282.667" y="400" width="32" height="32"/>
+  <object id="189" name="item1dup" x="285.333" y="506.667" width="32" height="32"/>
+  <object id="190" name="item3dup" x="270.667" y="590.667" width="32" height="32"/>
+  <object id="191" name="item4dup" x="277.333" y="636" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="6" name="Breakables">
   <object id="114" name="breakable" gid="526" x="832" y="384" width="64" height="64">

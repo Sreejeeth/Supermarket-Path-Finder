@@ -33,7 +33,7 @@ class TiledMap:
                     if tile:
                         surface.blit(tile, (x * self.tmxdata.tilewidth,
                                             y * self.tmxdata.tileheight))
-
+                        print(x,"    ",y,"     ",gid,"     ", layer)
     def make_map(self):
         temp_surface = pg.Surface((self.width, self.height))
         self.render(temp_surface)

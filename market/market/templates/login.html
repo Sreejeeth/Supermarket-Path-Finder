@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<style>
+body  {
+    background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png");
+    background-repeat:no-repeat;
+    background-size:150%;
+    background-color: #ffffff;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+</style>
+
+  {% if form.errors %}
+   <div style="background-color:black"; height= 30px>
+    <p style="color: red " align="center">Your username and password didn't match. Please try again.</p>
+</div>
+  {% endif %}
+<div align="center" id="slidedown">
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+    <button type="submit">Log in</button>
+    <p>
+      <p>
+    <a style="color:#000000;" href="{% url 'signup' %}">New to My Site? Sign up</a>
+  </form>
+</div>
+
+<!-- <body>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Username</label>
+            <input type="text" name="username">
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password">
+        </p>
+        <button type="submit">Login</button>
+    </form>
+</body> -->
+{% endblock %}
