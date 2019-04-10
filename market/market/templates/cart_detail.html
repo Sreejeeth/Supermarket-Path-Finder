@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+    Your cart
+{% endblock %}
+
+{% block content %}
+
+
+
+  
+
+        <div class="container">
+        <h2>Your Cart</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Remove</th>
+              <th>Unit Price</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                <tr>
+    <td><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"></td>
+                    <td>{{ product.name }}</td>
+                    <td>
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.update }}
+                            <input type="submit" value="Update">
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                    <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
+                    <td class="num">${{ item.price }}</td>
+                    <td class="num">${{ item.total_price }}</td>
+                </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td>Total</td>
+                <td colspan="4"></td>
+                <td class="num">${{ cart.get_total_price }}</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+      <p class="text-right">
+          <a href="{% url "home" %}" class="button light">Continue shopping</a> -->
+<div align="center">
+	<button type="submit", onclick="fun()">Submit</button>
+<script>
+	function fun(){
+	alert("Thanks for visiting us!");
+}
+</script>
+</div>
+<!--
+<div align="left">
+	<button type="submit",onClick="email()">Send mail</button>
+<script>
+function email(){
+
+emailjs.send("gmail","template_jpKYdkOi",{name: "James", notes: "Check this out!"});</script>
+	</div>-->
+
+<!--   <form id="myform" method="post">
+  <label>reply_to</label>
+  <input type="text" name="reply_to" />
+  <label>from_name</label>
+  <input type="text" name="from_name" />
+  <br><br>
+  <button>
+  Send
+  </button>
+  {%csrf_token%}
+  </form>
+ -->
+  <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+     (function(){
+        emailjs.init("user_m15yObX8RyeUjhFF7qZkY");
+     })();
+  </script>
+  <script>
+  var myform = $("form#myform");
+  myform.submit(function(event){
+  	event.preventDefault();
+
+    // Change to your service ID, or keep using the default service
+    var service_id = "default_service";
+    var template_id = "template_jpKYdkOi";
+
+    myform.find("button").text("Sending...");
+    emailjs.sendForm(service_id,template_id,"myform")
+    	.then(function(){
+      	alert("Sent!");
+         myform.find("button").text("Send");
+      }, function(err) {
+         alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+         myform.find("button").text("Send");
+      });
+    return false;
+  });</script>
+ -->
+</body>
+{% endblock %}

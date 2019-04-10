@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'supermarket',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -147,3 +149,4 @@ LOGIN_REDIRECT_URL = 'home'
 # STATICFILES_DIRS = [
 #     STATIC_DIR,
 # ]
+CART_SESSION_ID = 'cart'

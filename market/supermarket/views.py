@@ -53,20 +53,21 @@ from supermarket.sprites import *
 from supermarket.tilemap import *
 from tkinter import *
 from tkinter import messagebox
-
+from cart.forms import CartAddProductForm
+from cart.cart import Cart
 
 @login_required
 def home(request, category_slug=None):
-    # category = None
-    # categories = Category.objects.all()
-    # products = Productdb.objects.filter(available=True)
-    # if category_slug:
-    #     category = get_object_or_404(Category, slug=category_slug)
-    #     products = products.filter(category=category)
-    # return render(request, 'home.html', {'category': category,
-    #                                                       'categories': categories,
-    #                                                       'products': products})
-    return render(request,'home.html')
+    category = None
+    categories = Category.objects.all()
+    products = Productdb.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request, 'home.html', {'category': category,
+                                                          'categories': categories,
+                                                          'products': products})
+    # return render(request,'home.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -88,6 +89,12 @@ def front(request):
 
 # def about(request):
 #     return render(request, 'about.html')  
+def cart_detail(request):
+    cart = Cart(request)
+    for item in cart:
+        # item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
+                                                                   # 'update': True})
+        print(item)                                                           
 
 def logout(request):
   auth.logout(request)
@@ -96,20 +103,54 @@ def logout(request):
 
 def help(request):
     gg=Game()
-    gg.runpgm()
+    gg.runpgm(request)
     return render(request,'home3.html')
+
+def product_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Productdb.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request, 'list.html', {'category': category,
+                                                      'categories': categories,
+                                                      'products': products})
 
 def about(request):
     about_list = About.objects.all()
     about_dict = {"about_records":about_list}
+    # cart = Cart(request)
+    # print("caaaaart")
+    # print(cart)
+    # for item in cart:
+    #     print(item['product'])
     return render(request,'about.html',about_dict)
+
+
+
+def Tempcart(request):
+    global cart
+    cart=Cart(request)
+
+
+
 
 
 def about1(request):
    
     return render(request,'about1.html')
 
-
+# global TempCart
+# cart_lst=[]
+# global cart
+# def TempCart(request):
+#     # initialize all variables and do all the setup for a new game
+#         # global cart
+#     # global cart    
+#     cart = Cart(request)
+    # global cart_lst
+    # cart_lst=[]
 
 # def product_list(request, category_slug=None):
 #     category = None
@@ -121,15 +162,37 @@ def about1(request):
 #     return render(request, 'list.html', {'category': category,
 #                                                       'categories': categories,
 #                                                       'products': products})
-# def product_detail(request, id, slug):
-#     product = get_object_or_404(Productdb, id=id, slug=slug, available=True)
-#     cart_product_form = CartAddProductForm()
-#     return render(request,
-#                   'detail.html',
-#                   {'product': product,
-#                    'cart_product_form': cart_product_form})
+def product_detail(request, id, slug):
+    product = get_object_or_404(Productdb, id=id, slug=slug, available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request,
+                  'detail.html',
+                  {'product': product,
+                   'cart_product_form': cart_product_form})
 
 class Game:
+    # global Tempcart
+    # def Tempcart(request):
+
+    #     global cart
+    #     cart= Cart(request)
+    #     return cart
+
+    # def cartsystem():
+    #     global request
+    #     real_cart=Tempcart(request)
+
+    # real_real_cart=cartsystem()
+    # global Tempcart
+    # global cart_lst
+    # cart={}
+    # def Tempcart(request):
+
+    #     global cart
+    #     cart= Cart(request)
+        # return (request,cart)
+
+
     def __init__(self):
         pg.mixer.pre_init(44100, -16, 4, 2048)
         pg.init()
@@ -152,8 +215,14 @@ class Game:
         for item in ITEM_IMAGES:
             self.item_images[item] = pg.image.load(path.join(img_folder, ITEM_IMAGES[item])).convert_alpha()     
 
-    def new(self):
-        # initialize all variables and do all the setup for a new game
+    def new(self,request):
+
+        
+        # global request
+        global cart_lst
+        cart_lst=[]
+        cart=Cart(request)
+        # req,usable_cart=Tempcart(request)
         self.all_sprites = pg.sprite.LayeredUpdates()
         self.walls = pg.sprite.Group()
         self.items = pg.sprite.Group()
@@ -162,6 +231,19 @@ class Game:
 
         self.map_img = self.map.make_map()
         self.map.rect = self.map_img.get_rect()
+        for item in cart:
+                items=item['product']
+                print("items="+str(items))
+                cart_lst.append(str(items)) 
+        unique_list = [] 
+      
+         # traverse for all elements 
+        for x in cart_lst: 
+        # check if exists in unique_list or not 
+            if x not in unique_list: 
+                unique_list.append(x)  
+
+
         for tile_object in self.map.tmxdata.objects:
             obj_center = vec(tile_object.x + tile_object.width / 2,
                              tile_object.y + tile_object.height / 2)
@@ -169,9 +251,30 @@ class Game:
                 self.player = Player(self, obj_center.x, obj_center.y)
             if tile_object.name == 'wall':
                 Obstacle(self, tile_object.x, tile_object.y,
-                         tile_object.width, tile_object.height)  
-            if tile_object.name in [ 'item2','item3', 'item4']:
-                Item(self, obj_center, tile_object.name)  
+                         tile_object.width, tile_object.height)
+            # global cart 
+            # for item in cart:
+            #     items=item['product']
+            #     print("items="+str(items))
+            #     cart_lst.append(str(items))
+            # def unique(list1): 
+      
+            #  # intilize a null list 
+            # unique_list = [] 
+          
+            #  # traverse for all elements 
+            # for x in cart_lst: 
+            # # check if exists in unique_list or not 
+            #     if x not in unique_list: 
+            #         unique_list.append(x)    
+                    
+
+                   
+            item_lst=['Cheese','Banana', 'Grapes']  
+            if tile_object.name in unique_list:    # use item in cart .. find out the value of product(eg cheese)... if that value is present, add to dictionary as {product:vec}
+                Item(self, obj_center, tile_object.name)  # change to all characters to small case.. it will work
+        # print(cart_lst)
+
         self.camera = Camera(self.map.width, self.map.height)
         self.draw_debug = False
         self.paused = False
@@ -285,7 +388,7 @@ class Game:
             #         hit.type='asasas'                                                                                  # removes items 
             #     
 
-            if hit.type == 'item2':
+            if hit.type == 'Cheese':
                 
                 # print("hits")
                 
@@ -314,7 +417,7 @@ class Game:
                     hit.type='asasas'
 
 
-            if hit.type == 'item3':
+            if hit.type == 'Banana':
                 # hit.type='item3'
                
                 window=Tk()
@@ -339,7 +442,7 @@ class Game:
                     hit.type='asasas'
 
 
-            if hit.type == 'item4':
+            if hit.type == 'Grapes':
                 window=Tk()
                 
                 window.withdraw()
@@ -436,11 +539,11 @@ class Game:
 
         
                     
-    def runpgm(self):
+    def runpgm(self,request):
         g = Game()
         g.show_start_screen()
         while True:
-            g.new()
+            g.new(request)
             g.run()
             g.show_go_screen()
 

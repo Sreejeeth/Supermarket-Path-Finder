@@ -7,7 +7,18 @@
 
 {% block content %}
 
-
+<div class="pull-right" >
+    {% with total_items=cart|length %}
+        {% if cart|length > 0 %}
+            <h4>Your cart:</h4>
+            <a href="{% url "cart:cart_detail" %}">
+                <h4>{{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}</h4>
+            </a>
+        {% else %}
+            <h4>Your cart is empty</h4>
+        {% endif %}
+    {% endwith %}
+</div>
     <div class ="container">
       <div class ="jumbotron" style= "text-align :center ; margin :0 auto">
 

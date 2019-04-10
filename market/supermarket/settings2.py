@@ -80,14 +80,10 @@ EFFECTS_LAYER = 4
 ITEMS_LAYER = 1
 
 # Items
-ITEM_IMAGES = {'item1': 'health_pack.png',
-               'item2': 'bullet.png',
-               'item3': 'health_pack.png',
-               'item4': 'bullet.png',
-               'item1dup': 'health_pack.png',
-               'item2dup': 'bullet.png',
-               'item3dup': 'health_pack.png',
-               'item4dup': 'bullet.png'}
+ITEM_IMAGES = {'Cheese': 'bullet.png',
+               'Banana': 'bullet.png',
+               'Grapes': 'bullet.png',
+               }
 HEALTH_PACK_AMOUNT = 20
 BOB_RANGE = 10
 BOB_SPEED = 0.3

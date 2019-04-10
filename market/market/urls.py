@@ -35,17 +35,20 @@ urlpatterns = [
     # {'next_page': reverse_lazy("dashboard:operations_login")},
     # name="operations_logout"),
     url(r'^signup/$', core_views.signup, name='signup'),
-
+ url(r'^home2/', core_views.help ,name='home2'),
+      url(r'^about/', core_views.about ,name='about'),
 # url(r'^about/',core_views.about, name='about'),
-    # url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^product_list/$', core_views.product_list, name='product_list'),
+    url(r'^(?P<category_slug>[-\w]+)/$', core_views.product_list, name='product_list_by_category'),
     # url(r'^product_list/$', core_views.product_list, name='product_list'),
     # url(r'^(?P<category_slug>[-\w]+)/$', core_views.product_list, name='product_list_by_category'),
-    # url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$',core_views.product_detail,name='product_detail'),
+    url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$',core_views.product_detail,name='product_detail'),
 
 url(r'^about1/', core_views.about ,name='about1'),
-    url(r'^home2/', core_views.help ,name='home2'),
-     url(r'^about/', core_views.about ,name='about'),
-     
+   
+
+
     ]
 # urlpatterns = [
 #     url(r'^$',core_views.front, name='front'),

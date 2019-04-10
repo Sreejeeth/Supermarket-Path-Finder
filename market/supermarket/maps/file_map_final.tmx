@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="80" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="59">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="80" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="64">
  <tileset firstgid="1" source="spritesheet_tiles_v4.tsx"/>
  <tileset firstgid="541" source="onlywheat.tsx"/>
  <tileset firstgid="542" source="sacks_v1.tsx"/>
@@ -369,5 +369,8 @@
   <object id="55" name="wall" x="990.667" y="-2.66667" width="33.3333" height="161.333"/>
   <object id="56" name="wall" x="1124" y="-2.66667" width="24" height="157.333"/>
   <object id="57" name="wall" x="1248" y="0" width="30.6667" height="161.333"/>
+  <object id="61" name="Cheese" x="108" y="241.333"/>
+  <object id="62" name="Grapes" x="109.333" y="334.667"/>
+  <object id="63" name="Banana" x="238.667" y="302.667"/>
  </objectgroup>
 </map>
