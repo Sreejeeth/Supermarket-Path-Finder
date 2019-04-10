@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load staticfiles %}
+<div class="jumbotron " style= "text-align :center">
+  <h1>About</hi>
+</div>
+<br>
+<br>
+
+        <div class="Teeth_div">
+          {% if about_records %}
+
+                {% for acc in about_records %}
+
+                  <div class="container" >
+                    <div class="row">
+                      <div class="col-xs-4">
+                      <!-- <img src= "{% static "images/prostethics.jpg" %}" alt="Uh Oh, didn't show!"> -->
+                      <img src="{% if acc.image %}{{ acc.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                    </div>
+                      <div class="col-xs-8">
+                    <p>Name                  : <span style="font-family: verdana ; "> {{ acc.name }} </span></p>
+
+                    <p>Description                   :  <span  style="font-family: verdana">  {{ acc.description }} </span></p>
+                  </div>
+                </div>
+                    <hr style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;">
+                  </div>
+
+                {% endfor %}
+
+
+          {% else %}
+            <p>No Access Records. Table Not Created.</p>
+          {% endif %}
+        </div>
+{% endblock %}

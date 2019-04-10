@@ -133,3 +133,17 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
+
+
+# STATIC_URL = '/static/'
+
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# STATIC_URL = '/static/'
+# STATIC_ROOT=os.path.join(BASE_DIR,"static")
+# STATICFILES_DIRS =os.path.join(os.path.dirname(__file__),"static"),
+
+# STATIC_DIR = os.path.join(BASE_DIR,"static")
+
+# STATICFILES_DIRS = [
+#     STATIC_DIR,
+# ]

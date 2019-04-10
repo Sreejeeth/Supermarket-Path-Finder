@@ -23,11 +23,12 @@
 <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>logout</a></li>
-            <li><a class ="navbar-link"href="{% url 'home' %}">Game</a></label></li>
+            <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
+                  <li><a class ="navbar-link"href="{% url 'about1' %}">About</a></label></li>
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
             <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
-            <li><a class ="navbar-link"href="{% url 'home' %}">Game</a></label></li>
+            <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
             {% endif %}
 </ul>
 </div>

@@ -37,8 +37,9 @@ from django.contrib.auth.decorators import login_required
 #     else:
 #         form = UserCreationForm()
 #     return render(request, 'signup.html', {'form': form})
+from django.shortcuts import render, get_object_or_404
 
-
+from supermarket.models import Productdb,Category,About
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -55,9 +56,17 @@ from tkinter import messagebox
 
 
 @login_required
-def home(request):
-    return render(request, 'home.html')
-
+def home(request, category_slug=None):
+    # category = None
+    # categories = Category.objects.all()
+    # products = Productdb.objects.filter(available=True)
+    # if category_slug:
+    #     category = get_object_or_404(Category, slug=category_slug)
+    #     products = products.filter(category=category)
+    # return render(request, 'home.html', {'category': category,
+    #                                                       'categories': categories,
+    #                                                       'products': products})
+    return render(request,'home.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -77,6 +86,9 @@ def signup(request):
 def front(request):
     return render(request, 'front.html')  
 
+# def about(request):
+#     return render(request, 'about.html')  
+
 def logout(request):
   auth.logout(request)
   # Redirect to a success page.
@@ -85,15 +97,43 @@ def logout(request):
 def help(request):
     gg=Game()
     gg.runpgm()
-    return render(request,'home2.html')
+    return render(request,'home3.html')
+
+def about(request):
+    about_list = About.objects.all()
+    about_dict = {"about_records":about_list}
+    return render(request,'about.html',about_dict)
 
 
+def about1(request):
+   
+    return render(request,'about1.html')
+
+
+
+# def product_list(request, category_slug=None):
+#     category = None
+#     categories = Category.objects.all()
+#     products = Productdb.objects.filter(available=True)
+#     if category_slug:
+#         category = get_object_or_404(Category, slug=category_slug)
+#         products = products.filter(category=category)
+#     return render(request, 'list.html', {'category': category,
+#                                                       'categories': categories,
+#                                                       'products': products})
+# def product_detail(request, id, slug):
+#     product = get_object_or_404(Productdb, id=id, slug=slug, available=True)
+#     cart_product_form = CartAddProductForm()
+#     return render(request,
+#                   'detail.html',
+#                   {'product': product,
+#                    'cart_product_form': cart_product_form})
 
 class Game:
     def __init__(self):
         pg.mixer.pre_init(44100, -16, 4, 2048)
         pg.init()
-        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+        self.screen = pg.display.set_mode((10+WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
@@ -117,7 +157,9 @@ class Game:
         self.all_sprites = pg.sprite.LayeredUpdates()
         self.walls = pg.sprite.Group()
         self.items = pg.sprite.Group()
-        self.map = TiledMap(path.join(self.map_folder, 'level1.tmx'))
+        # self.map = TiledMap(path.join(self.map_folder, 'level1.tmx'))
+        self.map = TiledMap(path.join(self.map_folder, 'file_map_final.tmx'))
+
         self.map_img = self.map.make_map()
         self.map.rect = self.map_img.get_rect()
         for tile_object in self.map.tmxdata.objects:

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class ="container">
+      <div class ="jumbotron" style= "text-align :center ; margin :0 auto">
+
+
+        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+        </div>
+        <br>
+        <br>
+        {% for product in products %}
+            <div class="row">
+              <div class="col-xs-4">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                </a>
+              </div>
+              <div class="col-xs-8">
+                <h1><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h1><br>
+                ${{ product.price }}<br>
+                <br>
+                {{ product.description|linebreaks }}
+              </div>
+            </div>
+
+
+                 <hr style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;">
+
+
+        {% endfor %}
+    </div>
+{% endblock %}
