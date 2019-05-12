@@ -1,42 +1,99 @@
-
 <!DOCTYPE html>
+<html>
 {% load staticfiles %}
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Mvit.com{% endblock %}</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="{% static "css/base.css" % }"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-<style >
-.wrapper {
-    text-align: center;
-}
-.button {
-    position: absolute;
-    top: 50%;
-}
-body
-{
-    background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg");
-    /* background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png"); */
-    background-repeat:no-repeat;
-    background-size:150%;
-}
-em {      font-size: 200%;     }
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+<style type="text/css">
+        body { 
+         background: url('{% static "image/containers.jpg" %}') no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+        }
 </style>
-<body>
-<h1 class ="wrapper" style="color:#ffffff"><em>Student Information Portal</em></h1>
-<div class="wrapper">
-  <a href="{% url "home" %}">
+
+  <style>
+  body {
+      position: relative; 
+  }
+  #section1 {padding-top:50px;height:1000px;color: #fff;  background: url('{% static "images/1.png" %}') no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;}
+
+  #section2 {padding-top:50px;height:1000px;color: #fff;  background: url('{% static "images/2.png" %}') no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;}
+  #section3 {padding-top:50px;height:1000px;color: #fff;  background: url('{% static "images/3.png" %}') no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;}
+  #section4 {padding-top:50px;height:1000px;color: #fff;  background: url('{% static "images/4.png" %}') no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;}
+
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+           <li><a href="#section4">Section 4</a></li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="section1" class="container-fluid">
+ 
+</div>
+<div id="section2" class="container-fluid">
+
+</div>
+<div id="section3" class="container-fluid">
+
+</div>
+<div id="section4" class="container-fluid">
+<a href="{% url "home" %}">
   <button class="btn waves-effect waves-light button" type="submit" name="action">Get started
   </button></a>
+  
 </div>
+
+<div class="wrapper">
+  
+</div>
+
 </body>
 </html>

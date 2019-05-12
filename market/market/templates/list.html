@@ -29,9 +29,9 @@
         <br>
         {% for product in products %}
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-md-4">
                 <a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "images/no_image.png" %}{% endif %}">
+                    <img src= {% if product.image %}"{{ product.image.url }}"{% else %}"{% static "images/no_image.png" %}"{% endif %}>
                 </a>
               </div>
               <div class="col-xs-8">

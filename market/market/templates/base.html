@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,7 +14,7 @@
   <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
     <div class="container">
             <ul class="nav navbar-nav ">
-              <li>  <img src="{% static "images/sirmvit.jpg" %}" alt="Path Finder" style="width:50px;height:50px;"></li>
+              <li>  <img src="{% static "/images/no_image.png" %}" alt="Path Finder" style="width:50px;height:50px;"></li>
               <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
               
              

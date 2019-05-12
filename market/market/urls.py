@@ -24,7 +24,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^$', core_views.home, name='home'),
+    url(r'^$', core_views.front, name='home'),
+    url(r'^home/$', core_views.home, name='home'),
     url(r'^admin/', admin.site.urls),   
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
    # url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
@@ -48,8 +49,11 @@ urlpatterns = [
 url(r'^about1/', core_views.about ,name='about1'),
    
 
-
     ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
 # urlpatterns = [
 #     url(r'^$',core_views.front, name='front'),
 #     url(r'home', core_views.home, name='home'),

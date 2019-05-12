@@ -56,7 +56,7 @@ from tkinter import messagebox
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
 
-
+# from supermarket.examples.pathfinding.prototype import *
 
 
 
@@ -112,6 +112,8 @@ def help(request):
     gg.runpgm(request)
     print("home3")
     return render(request,'home2.html')
+
+
 
 def product_list(request, category_slug=None):
     category = None
