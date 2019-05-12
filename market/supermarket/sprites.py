@@ -5,7 +5,11 @@ from supermarket.tilemap import collide_hit_rect
 import pytweening as tween
 from itertools import chain
 vec = pg.math.Vector2
+font_name = pg.font.match_font('hack')
 
+vert_dist=0
+hori_dist=0
+total_dist=0
 def collide_with_walls(sprite, group, dir):
     if dir == 'x':
         hits = pg.sprite.spritecollide(sprite, group, False, collide_hit_rect)
@@ -44,8 +48,21 @@ class Player(pg.sprite.Sprite):
         self.health = PLAYER_HEALTH
         self.weapon = 'pistol'
         self.damaged = False
+        self.screen = pg.display.set_mode((10+WIDTH, HEIGHT))
+
+
+
+
+    def draw_text(self,text, size, color, x, y,align="bottomright"):
+        font = pg.font.Font(font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect(**{align: (x, y)})
+        self.screen.blit(text_surface, text_rect)    
 
     def get_keys(self):
+        global vert_dist
+        global hori_dist
+        global total_dist
         self.rot_speed = 0
         self.vel = vec(0, 0)
         keys = pg.key.get_pressed()
@@ -55,11 +72,34 @@ class Player(pg.sprite.Sprite):
             self.rot_speed = -PLAYER_ROT_SPEED
         if keys[pg.K_UP] or keys[pg.K_w]:
             self.vel = vec(PLAYER_SPEED, 0).rotate(-self.rot)
-        if keys[pg.K_DOWN] or keys[pg.K_s]:
-            self.vel = vec(-PLAYER_SPEED / 2, 0).rotate(-self.rot)
-        if keys[pg.K_SPACE]:
-            self.shoot()
+            # print(self.pos)
+            # print("self.vel")
+            # print(self.vel)
+            # vert_dist+=1.5
 
+            # # total_dist=vert_dist+hori_dist
+            # print("self.game.dt")
+            # print(self.game.dt)
+            print("self.pos")
+            print(self.pos)
+            # print("self.pos multiply")
+            # print(self.vel*self.game.dt)
+            vert_dist+=abs(self.vel[0])*self.game.dt
+            hori_dist+=self.vel[1]*self.game.dt
+            total_dist=vert_dist+hori_dist
+            print(total_dist)
+            align1="bottomright"
+            
+            #multiply self.vel*self.game.dt
+        # if keys[pg.K_DOWN] or keys[pg.K_s]:
+        #     self.vel = vec(-PLAYER_SPEED, 0).rotate(-self.rot) #removed/2
+        #     # dist+=self.pos[0]
+        #     vert_dist=self.pos[0]
+        #     total_dist=vert_dist+hori_dist
+        # total_dist=vert_dist+hori_dist
+        # print("total_dist")
+        
+    
 
     def update(self):
         self.get_keys()
@@ -78,6 +118,8 @@ class Player(pg.sprite.Sprite):
         self.hit_rect.centery = self.pos.y
         collide_with_walls(self, self.game.walls, 'y')
         self.rect.center = self.hit_rect.center
+        self.draw_text('Path length:{}'.format(total_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
+        pg.display.flip()
 
 
 class Obstacle(pg.sprite.Sprite):

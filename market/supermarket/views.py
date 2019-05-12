@@ -56,6 +56,12 @@ from tkinter import messagebox
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
 
+
+
+
+
+unique_list=[]
+boolean=True
 @login_required
 def home(request, category_slug=None):
     category = None
@@ -104,7 +110,8 @@ def logout(request):
 def help(request):
     gg=Game()
     gg.runpgm(request)
-    return render(request,'home3.html')
+    print("home3")
+    return render(request,'home2.html')
 
 def product_list(request, category_slug=None):
     category = None
@@ -194,12 +201,14 @@ class Game:
 
 
     def __init__(self):
+        global boolean
         pg.mixer.pre_init(44100, -16, 4, 2048)
         pg.init()
         self.screen = pg.display.set_mode((10+WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
+        # booleaZn=True
 
 
 
@@ -235,16 +244,21 @@ class Game:
                 items=item['product']
                 print("items="+str(items))
                 cart_lst.append(str(items)) 
-        unique_list = [] 
+        global unique_list        
+        # unique_list = [] 
       
          # traverse for all elements 
         for x in cart_lst: 
         # check if exists in unique_list or not 
             if x not in unique_list: 
-                unique_list.append(x)  
+                unique_list.append(x) 
+        # p=Player(self, 16,48)
 
-
+        # p.draw_text('Path length:{}'.format(total_dist/2), 30, GREEN, WIDTH - 10, HEIGHT - 45)
+        
+        # pg.display.flip()      
         for tile_object in self.map.tmxdata.objects:
+            
             obj_center = vec(tile_object.x + tile_object.width / 2,
                              tile_object.y + tile_object.height / 2)
             if tile_object.name == 'player':
@@ -280,12 +294,20 @@ class Game:
         self.paused = False
         self.night = False
         
-    def run(self):
+    def run(self,request):
         # game loop - set self.playing = False to end the game
         self.playing = True
+        global boolean
+        if boolean==False:
+            self.playing=False
+            # print("is it going?")
+            # print("False")
+
         while self.playing:
+            # print("yes")
             self.dt = self.clock.tick(FPS) / 1000.0  # fix for Python 2.x
-            self.events()
+            self.events(request)
+            # print("Flag")
             if not self.paused:
                 self.update()
             self.draw()
@@ -304,178 +326,35 @@ class Game:
         self.all_sprites.update()
         self.camera.update(self.player)
         hits = pg.sprite.spritecollide(self.player, self.items, False)
-        
+        global unique_list
         for hit in hits:
-            # if hit.type == 'item1':
-                # pg.event.get()
-                # if event.key==pygame.K_KP_ENTER:
-                # if pg.key.get_pressed()[K_KP_ENTER]:
-                # for event in pg.event.get():
-                #     if event.type == pg.:
-                        # if event.key == pg.K_p:
-                        #     self.paused = not self.paused     
-            # if hit.type == 'item2':
-                
-            #     # print("hits")
-                
-            #     window=Tk()
-                
-            #     window.withdraw()
+            for thing in unique_list:
 
-            #     if messagebox.askyesno('Question','do you want to add it')==True:
-            #         print('yes')
-            #         ans='yes'
+                # print(thing)
+                if hit.type == thing:
+                    
+                    # print("hits")
+                    
+                    window=Tk()
+                    
+                    window.withdraw()
 
-            #     else:
-            #         print('no')
-            #         ans='no'
+                    
+                    messagebox.showinfo("Cart", "Adding item to cart")
+                   
+                    window.deiconify()
+                    window.destroy()
+                    window.quit()
 
-            #     window.deiconify()
-            #     window.destroy()
-            #     window.quit()
-
-            #     if ans=='yes':
-            #         hit.kill()
-            #     else:
-            #         hit.type='asasas'
-
-
-            # if hit.type == 'item3':
-            #     # hit.type='item3'
-               
-            #     window=Tk()
-                
-            #     window.withdraw()
-
-            #     if messagebox.askyesno('Question','do you want to add it')==True:
-            #         print('yes')
-            #         ans='yes'
-
-            #     else:
-            #         print('no')
-            #         ans='no'
-
-            #     window.deiconify()
-            #     window.destroy()
-            #     window.quit()
-
-            #     if ans=='yes':
-            #         hit.kill()
-            #     else:
-            #         hit.type='asasas'
-
-
-            # if hit.type == 'item4':
-            #     window=Tk()
-                
-            #     window.withdraw()
-
-            #     if messagebox.askyesno('Question','do you want to add it')==True:
-            #         print('yes')
-            #         ans='yes'
-
-            #     else:
-            #         print('no')
-            #         ans='no'
-
-            #     window.deiconify()
-            #     window.destroy()
-            #     window.quit()
-
-            #     if ans=='yes':
-            #         hit.kill()
-            #     else:
-            #         hit.type='asasas'                                                                                  # removes items 
-            #     
-
-            if hit.type == 'Cheese':
-                
-                # print("hits")
-                
-                window=Tk()
-                
-                window.withdraw()
-
-                if messagebox.askyesno('Question','do you want to add it')==True:
-                    print('yes')
-                    ans='yes'
-
-                else:
-                    print('no')
-                    ans='no'
-
-                window.deiconify()
-                window.destroy()
-                window.quit()
-
-                if ans=='yes':
+                    # if answer=='yes':
                     hit.kill()
-                else:
-                    # pass
-                    # break
-                    # pg.time.delay(2000)
-                    hit.type='asasas'
 
 
-            if hit.type == 'Banana':
-                # hit.type='item3'
-               
-                window=Tk()
-                
-                window.withdraw()
 
-                if messagebox.askyesno('Question','do you want to add it')==True:
-                    print('yes')
-                    ans='yes'
-
-                else:
-                    print('no')
-                    ans='no'
-
-                window.deiconify()
-                window.destroy()
-                window.quit()
-
-                if ans=='yes':
-                    hit.kill()
-                else:
-                    hit.type='asasas'
-
-
-            if hit.type == 'Grapes':
-                window=Tk()
-                
-                window.withdraw()
-
-                if messagebox.askyesno('Question','do you want to add it')==True:
-                    print('yes')
-                    ans='yes'
-
-                else:
-                    print('no')
-                    ans='no'
-
-                window.deiconify()
-                window.destroy()
-                window.quit()
-
-                if ans=='yes':
-                    hit.kill()
-                else:
-                    hit.type='asasas'                                                                                  # removes items 
-                
-
-
-                                                                                               # removes items 
-                
-    # def draw_grid(self):
-    #     for x in range(0, WIDTH, TILESIZE):
-    #         pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
-    #     for y in range(0, HEIGHT, TILESIZE):
-    #         pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
 
     def draw(self):
+
         pg.display.set_caption("{:.2f}".format(self.clock.get_fps()))
         # self.screen.fill(BGCOLOR)
         self.screen.blit(self.map_img, self.camera.apply(self.map))
@@ -490,22 +369,36 @@ class Game:
                 pg.draw.rect(self.screen, CYAN, self.camera.apply_rect(wall.rect), 1)
 
         # pg.draw.rect(self.screen, WHITE, self.player.hit_rect, 2)
-        if self.night:
-            self.render_fog()
-        # HUD functions
-        if self.paused:
-            self.screen.blit(self.dim_screen, (0, 0))
-            self.draw_text("Paused", self.title_font, 105, RED, WIDTH / 2, HEIGHT / 2, align="center")
-        pg.display.flip()
 
-    def events(self):
+        # p.draw_text('Path length:{}'.format(total_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
+        
+        # pg.display.flip()
+
+    def events(self,request):
         # catch all events here
+        global boolean
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                self.quit()
+                # self.quit()
+                # boolean=False
+                # print("Flag")
+                # boolean=False
+                self.playing=False
+                boolean=False
+                # print("boolean")
+                # print(boolean)
+                # pg.quit()
+                # sys.exit()
+                return render(request, 'about.html')
+
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
-                    self.quit()
+                    # self.quit()
+                   # boolean=False
+                   self.playing=False
+                   boolean=False
+                   # print("False")
+                   return render(request, 'about.html')
                 if event.key == pg.K_h:
                     self.draw_debug = not self.draw_debug
                 if event.key == pg.K_p:
@@ -515,6 +408,12 @@ class Game:
 
     def show_start_screen(self):
         pass
+
+    def draw_text(self, text, font_name, size, color, x, y, align="topleft"):
+        font = pg.font.Font(font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect(**{align: (x, y)})
+        self.screen.blit(text_surface, text_rect)    
 
     def show_go_screen(self):
         self.screen.fill(BLACK)
@@ -542,10 +441,22 @@ class Game:
     def runpgm(self,request):
         g = Game()
         g.show_start_screen()
-        while True:
+        # self.playing=True
+        global boolean
+        # boolean=True
+
+        print("Boooooolean in runpgm")
+        print(boolean)
+        while boolean:
             g.new(request)
-            g.run()
-            g.show_go_screen()
+            print("asdasdadasdsadasdadasd")
+            g.run(request)
+            print("111111111111111111111111111111111111111asdasdadasdsadasdadasd")
+            print(boolean)
+            # g.show_go_screen()
 
+        # if boolean==False:
+        #     print("asdasdasd")
+        #     self.quit()
 
-        return render(request, 'home2.html') 
+        # return render(request, 'about.html') 
