@@ -47,7 +47,7 @@ from django.shortcuts import render, redirect
 import pygame as pg
 import sys
 from random import choice, random
-from os import path
+from os import path as ispath
 from supermarket.settings2 import *
 from supermarket.sprites import *
 from supermarket.tilemap import *
@@ -55,6 +55,7 @@ from tkinter import *
 from tkinter import messagebox
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
+from supermarket.prototype import *
 
 # from supermarket.examples.pathfinding.prototype import *
 
@@ -109,11 +110,21 @@ def logout(request):
 
 def help(request):
     gg=Game()
+    print("haaaaalo")
     gg.runpgm(request)
     print("home3")
+    pg.quit()
+
+    # sys.exit()
     return render(request,'home2.html')
 
 
+def home3(request):
+    start1()
+
+    
+
+    return render(request,'about.html')
 
 def product_list(request, category_slug=None):
     category = None
@@ -215,16 +226,16 @@ class Game:
 
 
     def load_data(self):
-        game_folder = path.dirname(__file__)
-        img_folder = path.join(game_folder, 'img')
+        game_folder = ispath.dirname(__file__)
+        img_folder = ispath.join(game_folder, 'img')
         
-        self.map_folder = path.join(game_folder, 'maps')
+        self.map_folder = ispath.join(game_folder, 'maps')
         self.dim_screen = pg.Surface(self.screen.get_size()).convert_alpha()
         self.dim_screen.fill((0, 0, 0, 180))
-        self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
+        self.player_img = pg.image.load(ispath.join(img_folder, PLAYER_IMG)).convert_alpha()
         self.item_images = {}
         for item in ITEM_IMAGES:
-            self.item_images[item] = pg.image.load(path.join(img_folder, ITEM_IMAGES[item])).convert_alpha()     
+            self.item_images[item] = pg.image.load(ispath.join(img_folder, ITEM_IMAGES[item])).convert_alpha()     
 
     def new(self,request):
 
@@ -238,7 +249,7 @@ class Game:
         self.walls = pg.sprite.Group()
         self.items = pg.sprite.Group()
         # self.map = TiledMap(path.join(self.map_folder, 'level1.tmx'))
-        self.map = TiledMap(path.join(self.map_folder, 'file_map_final.tmx'))
+        self.map = TiledMap(ispath.join(self.map_folder, 'file_map_final.tmx'))
 
         self.map_img = self.map.make_map()
         self.map.rect = self.map_img.get_rect()
@@ -385,22 +396,24 @@ class Game:
                 # boolean=False
                 # print("Flag")
                 # boolean=False
+                print("event")
                 self.playing=False
                 boolean=False
                 # print("boolean")
                 # print(boolean)
                 # pg.quit()
                 # sys.exit()
-                return render(request, 'about.html')
+                # return render(request, 'about.html')
 
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     # self.quit()
                    # boolean=False
+                   print("event")
                    self.playing=False
                    boolean=False
                    # print("False")
-                   return render(request, 'about.html')
+                   # return render(request, 'about.html')
                 if event.key == pg.K_h:
                     self.draw_debug = not self.draw_debug
                 if event.key == pg.K_p:
@@ -453,12 +466,16 @@ class Game:
             g.new(request)
             print("asdasdadasdsadasdadasd")
             g.run(request)
+            # self.quit()
             print("111111111111111111111111111111111111111asdasdadasdsadasdadasd")
             print(boolean)
+            # if boolean==False:
+            # pg.display.flip()
             # g.show_go_screen()
 
         # if boolean==False:
         #     print("asdasdasd")
-        #     self.quit()
+            # pg.quit()
+            # self.quit()
 
         # return render(request, 'about.html') 

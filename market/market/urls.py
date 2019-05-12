@@ -37,6 +37,7 @@ urlpatterns = [
     # name="operations_logout"),
     url(r'^signup/$', core_views.signup, name='signup'),
  url(r'^home2/', core_views.help ,name='home2'),
+  url(r'^home3/', core_views.home3 ,name='home3'),
       url(r'^about/', core_views.about ,name='about'),
 # url(r'^about/',core_views.about, name='about'),
     url(r'^cart/', include('cart.urls', namespace='cart')),
