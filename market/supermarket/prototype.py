@@ -3,6 +3,9 @@ import pygame as pg
 from os import path as ospath
 import heapq
 vec = pg.math.Vector2
+from cart.forms import CartAddProductForm
+from cart.cart import Cart
+from supermarket.prototype import *
 
 # screen =pg.display.set_mode((0, 0))
 DARKGRAY = (40, 40, 40)
@@ -39,15 +42,39 @@ LIGHTGRAY = (140, 140, 140)
 
 # home_img= 
 # arrow={}
+unique_list_prot=[]
 boolean=True
-def start1():
+def start1(cart_prot):
 
+    global cart_lst_prot
+    cart_lst_prot=[]
+
+
+    print("cart2")
+    for item in cart_prot:
+        items=item['product']
+        print("items="+str(items))
+        cart_lst_prot.append(str(items)) 
+
+    global unique_list_prot        
+        # unique_list = [] 
+      
+         # traverse for all elements 
+    for x in cart_lst_prot: 
+    # check if exists in unique_list or not 
+        if x not in unique_list_prot: 
+            unique_list_prot.append(x) 
+    # item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
+                                                               # 'update': True})
+        # print(item)     
+    print("unique_list")
+    print(unique_list_prot)   
     global boolean
     if boolean==True:
         print("start1")
         global p,o,path,goal1,cost,start,small,arrows
-        p=6
-        o=6
+        p=2
+        o=2
         path={}
         goal1=[]
         cost={}
@@ -877,7 +904,16 @@ def start1():
         # global p
         # global o
         # global goal1
-        goal1=[vec(40,9),vec(14,8),vec(8,4),vec(20,8),vec(25,3),vec(9,6)]
+
+        print("vector")
+        for vector in unique_list_prot:
+            if vector=="Nikon camera":
+                goal1.append(vec(17,9))
+            if vector=="Bleach":
+                goal1.append(vec(14,9))
+
+        print(goal1)
+        # goal1=[vec(40,9),vec(14,8)]
         # global start
         start = vec(8, 0)
         search_type = a_star_search

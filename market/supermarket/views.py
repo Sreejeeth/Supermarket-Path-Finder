@@ -120,8 +120,11 @@ def help(request):
 
 
 def home3(request):
-    start1()
     
+    cart_2=Cart(request)
+                                                       
+
+    start1(cart_2)
     
 
     return render(request,'about.html')
