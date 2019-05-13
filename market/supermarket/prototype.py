@@ -73,8 +73,8 @@ def start1(cart_prot):
     if boolean==True:
         print("start1")
         global p,o,path,goal1,cost,start,small,arrows
-        p=2
-        o=2
+        p=3
+        o=3
         path={}
         goal1=[]
         cost={}
@@ -908,9 +908,11 @@ def start1(cart_prot):
         print("vector")
         for vector in unique_list_prot:
             if vector=="Nikon camera":
-                goal1.append(vec(17,9))
+                goal1.append(vec(27,9))
             if vector=="Bleach":
                 goal1.append(vec(14,9))
+            if vector=="Brown bag":
+                goal1.append(vec(19,70))
 
         print(goal1)
         # goal1=[vec(40,9),vec(14,8)]
