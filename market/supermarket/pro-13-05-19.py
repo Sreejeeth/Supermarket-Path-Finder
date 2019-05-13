@@ -100,6 +100,7 @@ def start1():
         # path={}
 
         c={}
+
         # p=6
         # o=6
         # global p
@@ -456,6 +457,5 @@ def demo():
     p=p-1
     for k in range(p):
         path[k] ,c[k] = search_type(g,goal1[k],start) 
-
 
 

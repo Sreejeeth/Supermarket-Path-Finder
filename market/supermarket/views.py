@@ -121,7 +121,7 @@ def help(request):
 
 def home3(request):
     start1()
-
+    
     
 
     return render(request,'about.html')
