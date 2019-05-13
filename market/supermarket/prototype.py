@@ -925,7 +925,6 @@ def start1(cart_prot):
             path[k] ,c[k] = search_type(g,goal1[k],start)
 
 
-
         # global small    
         small=100000
 

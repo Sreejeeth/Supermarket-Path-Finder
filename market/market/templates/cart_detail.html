@@ -32,7 +32,7 @@
             {% for item in cart %}
                 {% with product=item.product %}
                 <tr>
-    <td><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"></td>
+    <td><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "images/no_image.png" %}{% endif %}"></td>
                     <td>{{ product.name }}</td>
                     <td>
                         <form action="{% url "cart:cart_add" product.id %}" method="post">
