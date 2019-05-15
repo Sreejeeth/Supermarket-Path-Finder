@@ -984,7 +984,7 @@ def start1(cart_prot,boolean5):
                 if vector=="Carrots":
                     goal1.append(vec(32,77))
                 if vector=="Cheese Block":
-                    goal1.append(vec(2,73))
+                    goal1.append(vec(3,74))
                 if vector=="Cherry":
                     goal1.append(vec(37,49))
                 if vector=="Chicken breast":

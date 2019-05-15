@@ -17,7 +17,7 @@
     <div class="container">
             <ul class="nav navbar-nav ">
               <!-- <li>  <img src="{% static '/images/no_image.png' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
-              <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
+              <li ><label><a class ="navbar-brand " href="{% url 'front2' %}">Home</a></label></li>
               
              
 
@@ -43,6 +43,12 @@
          -o-background-size: cover;
          background-size: cover;}
 
+button
+        {
+          position: absolute;
+          top: 80%;
+        }
+
 </style>
 <!-- <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
       <div class="container">
@@ -67,9 +73,11 @@
 <!-- <h1>asdasdads</h1> -->
 <div id="section5" class="container-fluid">
 
-
- <li><a class ="navbar-link"href="{% url 'home3' %}">Game</a></label></li>
-    </div>
+<div align="center">
+ <!-- <button type="button" class="btn btn-success"><a class ="navbar-link"href="{% url 'home2' %}""></a>Virtual Supermarket</button> -->
+ <a class ="navbar-link"href="{% url 'home2' %}"><button type="button" class="btn btn-success">Virtual supermarket</button></a>
+</div>
+</div>
 </div>
   </body>
 </html>

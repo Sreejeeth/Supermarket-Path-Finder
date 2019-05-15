@@ -193,7 +193,7 @@
     <div class="container">
             <ul class="nav navbar-nav ">
               <!-- <li>  <img src="{% static 'images/sirmvit.jpg' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
-              <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
+              <li ><label><a class ="navbar-brand " href="{% url 'front2' %}">Home</a></label></li>
               
              
 
@@ -240,7 +240,7 @@
     {% with total_items=cart|length %}
         {% if cart|length > 0 %}
             <h4>Your cart:</h4>
-            <a href="{% url 'cart:cart_detail' %}">
+            <a href="{% url "cart:cart_detail" %}">
                 <h4>{{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}</h4>
             </a>
         {% else %}

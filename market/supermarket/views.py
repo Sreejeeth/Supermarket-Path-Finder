@@ -95,6 +95,13 @@ def signup(request):
 def front(request):
     return render(request, 'front.html')  
 
+
+
+def virtual(request):
+    return render(request, 'virtual.html')  
+
+def front2(request):
+    return render(request, 'front2.html')  
 # def about(request):
 #     return render(request, 'about.html')  
 def cart_detail(request):

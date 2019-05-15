@@ -31,6 +31,8 @@ urlpatterns = [
    # url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
    url(r'^logout/$', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
      url(r'^logout/$', auth_views.LogoutView, {'next_page': 'login'}, name='logout'),
+     url(r'^front2/$', core_views.front2, name='front2'),
+      url(r'^virtual/$', core_views.virtual, name='virtual'),
     # url(r'^logout/$',
     # auth_views.LogoutView,
     # {'next_page': reverse_lazy("dashboard:operations_login")},
