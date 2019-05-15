@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Pathfinder.com{% endblock %}</title>
+    <title>{% block title %}Supermarket Path Finder{% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/base.css" % }"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -55,13 +55,17 @@
   <!--    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'> -->
   </head>
-  <style >
+  
+
+  <!-- <style >
   body
   {
       /* background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg"); */
-      background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png");
+      /* background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png"); */
       background-repeat:no-repeat;
       background-size:150%;
+      background-color: #ffffff;
+
   }
   </style>
   <style>
@@ -80,21 +84,115 @@
       padding: 2px 16px;
   }
   em {      font-size: 200%;     }
-  </style>
+  </style> -->
+
+
+<style>
+        em {      font-size: 200%;     }
+        body{
+            margin: 0;
+            padding: 0;
+            background-image: url("https://companyofwomen.co/wp-content/uploads/2018/05/Booth.jpg");
+        }
+        body:before{
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            /*-webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);*/
+        }
+        .bgform
+        {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 400px;
+            height: 1080px;
+            padding: 80px 40px;
+            box-sizing: border-box;
+            background: rgba(0,0,0,.5);
+        }
+        .avatar {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            top: calc(-80px/2);
+            left: calc(50% - 40px);
+        }
+        .bgform h2 {
+            margin: 0;
+            padding: 0 0 20px;
+            color: #000000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .bgform p
+        {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            color: #fff;
+        }
+        .bgform input
+        {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .bgform input[type="text"],
+        .bgform input[type="password"]
+        {
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+        .bgformbgform input[type="submit"] {
+            height: 30px;
+            color: #fff;
+            font-size: 15px;
+            background: red;
+            cursor: pointer;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            margin-top: 15%;
+        }
+        .bgform a
+        {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        input[type="checkbox"] {
+            width: 20%;
+        }
+    </style>
+
+
+
 <body>
-
-
-
-
-
-
-
 
 
  <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
     <div class="container">
             <ul class="nav navbar-nav ">
-              <li>  <img src="{% static "images/sirmvit.jpg" %}" alt="Path Finder" style="width:50px;height:50px;"></li>
+              <!-- <li>  <img src="{% static 'images/sirmvit.jpg' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
               <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
               
              
@@ -142,17 +240,19 @@
     {% with total_items=cart|length %}
         {% if cart|length > 0 %}
             <h4>Your cart:</h4>
-            <a href="{% url "cart:cart_detail" %}">
+            <a href="{% url 'cart:cart_detail' %}">
                 <h4>{{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}</h4>
             </a>
         {% else %}
-            <h4>Your cart is empty</h4>
+            <h4><b>Your cart is empty  </b></h4>
         {% endif %}
     {% endwith %}
 </div>
 
-   <div class="container" style="height :100% ">
-<h1 style="color:#ffffff"><em>Categories</em></h1>
+
+
+<div class="container" align="center" style="height :100% ">
+<h1 align="center" style="color:#000000"><em>Categories</em></h1>
 <br>
 <br>
         <!-- <div class="row">
@@ -166,6 +266,7 @@
             </div>
           </div>
         </div> -->
+
   {% for c in categories %}
               <div class="btn-group">
                 <h1 {% if category.slug == c.slug %}class="selected"{% endif %}>
@@ -173,6 +274,7 @@
             </h1>
                 <!-- <button><a href="{{ c.get_absolute_url }}">{{c.name}}</a></button> -->
               </div>
+
 
               <!-- <div class="col s10  m4">
                 <div class="card black darken-1">

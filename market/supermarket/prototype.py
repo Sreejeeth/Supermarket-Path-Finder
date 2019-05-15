@@ -91,8 +91,10 @@ def start1(cart_prot,boolean5):
         if boolean2==True:
             print("start1")
             global p,o,path,goal1,cost,start,small,arrows
-            p=3
-            o=3
+            # p=3
+            # o=3
+            p=len(unique_list_prot)
+            o=len(unique_list_prot)
             path={}
             goal1=[]
             cost={}
@@ -924,6 +926,15 @@ def start1(cart_prot,boolean5):
             # global goal1
 
             print("vector")
+            # for vector in unique_list_prot:
+            #     if vector=="Nikon camera":
+            #         goal1.append(vec(27,9))
+            #     if vector=="Bleach":
+            #         goal1.append(vec(14,9))
+            #     if vector=="Brown bag":
+            #         goal1.append(vec(19,70))
+
+
             for vector in unique_list_prot:
                 if vector=="Nikon camera":
                     goal1.append(vec(27,9))
@@ -931,7 +942,279 @@ def start1(cart_prot,boolean5):
                     goal1.append(vec(14,9))
                 if vector=="Brown bag":
                     goal1.append(vec(19,70))
-
+                if vector=="7up":
+                    goal1.append(vec(3,59))
+                if vector=="Accessories":
+                    goal1.append(vec(27,20))
+                if vector=="Aubergine":
+                    goal1.append(vec(24,77))
+                if vector=="Balloon skirt":
+                    goal1.append(vec(7,8))
+                if vector=="Banana":
+                    goal1.append(vec(37,59))
+                if vector=="Blue cheese":
+                    goal1.append(vec(6,73))
+                if vector=="Blue fish":
+                    goal1.append(vec(10,77))
+                if vector=="Blue hotwheels":
+                    goal1.append(vec(8,18))
+                if vector=="Blue pillow":
+                    goal1.append(vec(7,62))
+                if vector=="Blue sweater":
+                    goal1.append(vec(20,8))
+                if vector=="Bodycon skirt":
+                    goal1.append(vec(15,8))
+                if vector=="Brocolli":
+                    goal1.append(vec(26,77))
+                if vector=="Broom":
+                    goal1.append(vec(33,20))
+                if vector=="Butterscotch toffee":
+                    goal1.append(vec(19,47))
+                if vector=="Button mushrooms":
+                    goal1.append(vec(37,69))
+                if vector=="Cabbage":
+                    goal1.append(vec(23,76))
+                if vector=="Canned beans":
+                    goal1.append(vec(3,20))
+                if vector=="Carrots":
+                    goal1.append(vec(32,77))
+                if vector=="Cheese Block":
+                    goal1.append(vec(2,73))
+                if vector=="Cherry":
+                    goal1.append(vec(37,49))
+                if vector=="Chicken breast":
+                    goal1.append(vec(4,77))
+                if vector=="Chicken leg":
+                    goal1.append(vec(2,75))
+                if vector=="Chilly":
+                    goal1.append(vec(37,67))
+                if vector=="Chinese cabbage":
+                    goal1.append(vec(36,77))
+                if vector=="Chings noodles":
+                    goal1.append(vec(3,14))
+                if vector=="Chocolate":
+                    goal1.append(vec(15,48))
+                if vector=="Chocos":
+                    goal1.append(vec(3,69))
+                if vector=="Coca cola":
+                    goal1.append(vec(3,53))
+                if vector=="Cold cream":
+                    goal1.append(vec(29,19))
+                if vector=="Colin":
+                    goal1.append(vec(37,32))
+                if vector=="Cushions":
+                    goal1.append(vec(7,43))
+                if vector=="Daisy":
+                    goal1.append(vec(33,67))
+                if vector=="Denim jacket":
+                    goal1.append(vec(9,6))
+                if vector=="Denim jeans":
+                    goal1.append(vec(9,11))
+                if vector=="Denim shirt":
+                    goal1.append(vec(17,6))
+                if vector=="Diet cola":
+                    goal1.append(vec(3,57))
+                if vector=="Dustpan":
+                    goal1.append(vec(33,33))
+                if vector=="Eazy softener":
+                    goal1.append(vec(37,26))
+                if vector=="Eggs":
+                    goal1.append(vec(26,67))
+                if vector=="Eu de cologne":
+                    goal1.append(vec(29,42))
+                if vector=="Ferns":
+                    goal1.append(vec(33,60))
+                if vector=="Fish cuts":
+                    goal1.append(vec(2,77))
+                if vector=="Gardening gloves":
+                    goal1.append(vec(22,54))
+                if vector=="Garlic":
+                    goal1.append(vec(34,77))
+                if vector=="Gin":
+                    goal1.append(vec(10,69))
+                if vector=="Grapefruit":
+                    goal1.append(vec(37,43))
+                if vector=="Grapes":
+                    goal1.append(vec(37,53))
+                if vector=="Green bucket":
+                    goal1.append(vec(27,51))
+                if vector=="Ham":
+                    goal1.append(vec(8,77))
+                if vector=="Hersheys":
+                    goal1.append(vec(15,54))
+                if vector=="Honey":
+                    goal1.append(vec(3,48))
+                if vector=="Jalapenos":
+                    goal1.append(vec(3,24))
+                if vector=="Katla fish":
+                    goal1.append(vec(18,77))
+                if vector=="Ketchup":
+                    goal1.append(vec(3,51))
+                if vector=="Lakme compact":
+                    goal1.append(vec(29,37))
+                if vector=="Lavender":
+                    goal1.append(vec(29,60))
+                if vector=="Lemon":
+                    goal1.append(vec(37,51))
+                if vector=="Lemon grass":
+                    goal1.append(vec(28,77))
+                if vector=="Lilac turnip":
+                    goal1.append(vec(30,77))
+                if vector=="Lillies":
+                    goal1.append(vec(29,66))
+                if vector=="Lime":
+                    goal1.append(vec(37,41))
+                if vector=="Lipstick":
+                    goal1.append(vec(27,24))
+                if vector=="Lollipop":
+                    goal1.append(vec(19,53))
+                if vector=="Lotus":
+                    goal1.append(vec(29,70))
+                if vector=="Lux soap":
+                    goal1.append(vec(26,38))
+                if vector=="Mackerel":
+                    goal1.append(vec(19,76))
+                if vector=="Maggi noodles":
+                    goal1.append(vec(3,16))
+                if vector=="Maize":
+                    goal1.append(vec(3,10))
+                if vector=="Mayonnaise":
+                    goal1.append(vec(3,45))
+                if vector=="Milk candy":
+                    goal1.append(vec(19,41))
+                if vector=="Milk cartons":
+                    goal1.append(vec(22,67))
+                if vector=="Mop wiper":
+                    goal1.append(vec(33,26))
+                if vector=="Mr. muscle":
+                    goal1.append(vec(37,34))
+                if vector=="Muffin":
+                    goal1.append(vec(19,65))
+                if vector=="Mulberry":
+                    goal1.append(vec(37,55))
+                if vector=="Mutton":
+                    goal1.append(vec(2,76))
+                if vector=="Nectarine":
+                    goal1.append(vec(37,63))
+                if vector=="Nivea cream":
+                    goal1.append(vec(29,31))
+                if vector=="Olive oil":
+                    goal1.append(vec(15,66))
+                if vector=="Orange juice":
+                    goal1.append(vec(3,65))
+                if vector=="Oyester mushroom":
+                    goal1.append(vec(37,73))
+                if vector=="Papaya":
+                    goal1.append(vec(37,45))
+                if vector=="Pastry":
+                    goal1.append(vec(19,59))
+                if vector=="Peanut butter":
+                    goal1.append(vec(3,39))
+                if vector=="Peplum top":
+                    goal1.append(vec(17,11))
+                if vector=="Pepsi can":
+                    goal1.append(vec(3,55))
+                if vector=="Perfume":
+                    goal1.append(vec(28,47))
+                if vector=="Pickle":
+                    goal1.append(vec(3,42))
+                if vector=="Pineapple":
+                    goal1.append(vec(37,57))
+                if vector=="Pink top":
+                    goal1.append(vec(12,8))
+                if vector=="Pinwheel candy":
+                    goal1.append(vec(15,37))
+                if vector=="Pomegranate":
+                    goal1.append(vec(37,37))
+                if vector=="Pompfret":
+                    goal1.append(vec(14,77))
+                if vector=="Potatoes":
+                    goal1.append(vec(37,65))
+                if vector=="Prawn":
+                    goal1.append(vec(19,79))
+                if vector=="Pumpkin":
+                    goal1.append(vec(37,77))
+                if vector=="Rasgulla":
+                    goal1.append(vec(3,27))
+                if vector=="Raw honey":
+                    goal1.append(vec(15,60))
+                if vector=="Red Bull":
+                    goal1.append(vec(3,61))
+                if vector=="Red apple":
+                    goal1.append(vec(37,61))
+                if vector=="Red wine":
+                    goal1.append(vec(5,69))
+                if vector=="Ribs":
+                    goal1.append(vec(6,77))
+                if vector=="Rohu fish":
+                    goal1.append(vec(12,77))
+                if vector=="Rye":
+                    goal1.append(vec(19,71))
+                if vector=="Saffola gold":
+                    goal1.append(vec(3,67))
+                if vector=="Sardines":
+                    goal1.append(vec(3,36))
+                if vector=="Satchel bag":
+                    goal1.append(vec(7,31))
+                if vector=="Schezwan sauce":
+                    goal1.append(vec(3,33))
+                if vector=="Shiitake mushroom":
+                    goal1.append(vec(37,75))
+                if vector=="Shovel":
+                    goal1.append(vec(24,47))
+                if vector=="Shrooms":
+                    goal1.append(vec(37,71))
+                if vector=="Sparx":
+                    goal1.append(vec(37,30))
+                if vector=="Sprite":
+                    goal1.append(vec(3,63))
+                if vector=="Steam iron":
+                    goal1.append(vec(19,15))
+                if vector=="Strawberry":
+                    goal1.append(vec(37,47))
+                if vector=="Strawberry candy":
+                    goal1.append(vec(15,42))
+                if vector=="Sugar":
+                    goal1.append(vec(3,7))
+                if vector=="Sunscreen":
+                    goal1.append(vec(29,25))
+                if vector=="Surf":
+                    goal1.append(vec(37,22))
+                if vector=="Tide":
+                    goal1.append(vec(37,24))
+                if vector=="Toothpaste":
+                    goal1.append(vec(16,27))
+                if vector=="Tuna can":
+                    goal1.append(vec(3,30))
+                if vector=="Vacuum cleaner":
+                    goal1.append(vec(31,51))
+                if vector=="Vanish":
+                    goal1.append(vec(37,20))
+                if vector=="Wai Wai noodles":
+                    goal1.append(vec(3,12))
+                if vector=="Watering can":
+                    goal1.append(vec(26,54))
+                if vector=="Wheat flour":
+                    goal1.append(vec(3,4))
+                if vector=="Whiskey":
+                    goal1.append(vec(14,69))
+                if vector=="White pillow":
+                    goal1.append(vec(7,49))
+                if vector=="Wiper":
+                    goal1.append(vec(33,39))
+                if vector=="Wire brush":
+                    goal1.append(vec(33,45))
+                if vector=="Yellow cushions":
+                    goal1.append(vec(7,38))
+                if vector=="Yellow pilow":
+                    goal1.append(vec(7,56))
+                if vector=="Yellow hotwheels":
+                    goal1.append(vec(11,15))
+                if vector=="Yippie noodles":
+                    goal1.append(vec(3,18))
+                if vector=="eel fish":
+                    goal1.append(vec(16,77))
+               
             print(goal1)
             # goal1=[vec(40,9),vec(14,8)]
             # global start

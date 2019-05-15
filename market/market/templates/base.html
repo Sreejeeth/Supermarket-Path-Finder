@@ -4,17 +4,19 @@
   <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Pathfinder.com{% endblock %}</title>
-    <link rel="stylesheet" href="{% static "css/base.css" % }"/>
+    <title>{% block title %}Supermarket Path Finder{% endblock %}</title>
+    <link rel="stylesheet" href="{% static' 'css/base.css' % }"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
+
 <body>
+
   <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
     <div class="container">
             <ul class="nav navbar-nav ">
-              <li>  <img src="{% static "/images/no_image.png" %}" alt="Path Finder" style="width:50px;height:50px;"></li>
+              <!-- <li>  <img src="{% static '/images/no_image.png' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
               <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
               
              
@@ -22,13 +24,13 @@
 </ul>
 <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-            <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>logout</a></li>
+            <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>  logout</a></li>
             <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
-                  <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li>
+            <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li>
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
             <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
-            <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
+            <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
             {% endif %}
 </ul>
 </div>
