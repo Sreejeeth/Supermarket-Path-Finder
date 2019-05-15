@@ -63,6 +63,7 @@ from supermarket.prototype import *
 
 unique_list=[]
 boolean=True
+boolean1=False
 @login_required
 def home(request, category_slug=None):
     category = None
@@ -114,19 +115,31 @@ def help(request):
     gg.runpgm(request)
     print("home3")
     pg.quit()
-
+    global boolean5
+    boolean5=True
+    # global boolean
+    # boolean=True
+    # global boolean2
+    # boolean2=True
     # sys.exit()
+
+
     return render(request,'home2.html')
 
 
 def home3(request):
     
+    global boolean,boolean5
+    boolean=True
+
+    boolean5=True
     cart_2=Cart(request)
                                                        
 
-    start1(cart_2)
-    
-
+    start1(cart_2,boolean5)
+    print("haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalo")
+    boolean5=False
+    pg.quit()
     return render(request,'about.html')
 
 def product_list(request, category_slug=None):
@@ -144,8 +157,15 @@ def about(request):
     about_list = About.objects.all()
     about_dict = {"about_records":about_list}
     # cart = Cart(request)
+    global boolean,boolean5
+    boolean5=True
+    boolean=True
+    toggle()
     # print("caaaaart")
-    # print(cart)
+    # # print(cart)
+    # global boolean2
+    # print("boolean2")
+    # print(boolean2)
     # for item in cart:
     #     print(item['product'])
     return render(request,'about.html',about_dict)

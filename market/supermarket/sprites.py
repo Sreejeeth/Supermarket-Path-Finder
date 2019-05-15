@@ -7,6 +7,8 @@ from itertools import chain
 vec = pg.math.Vector2
 font_name = pg.font.match_font('hack')
 
+tott_dist=0
+tot_dist=0
 vert_dist=0
 hori_dist=0
 total_dist=0
@@ -62,6 +64,8 @@ class Player(pg.sprite.Sprite):
     def get_keys(self):
         global vert_dist
         global hori_dist
+        global tot_dist
+        # self.pos
         global total_dist
         self.rot_speed = 0
         self.vel = vec(0, 0)
@@ -71,7 +75,13 @@ class Player(pg.sprite.Sprite):
         if keys[pg.K_RIGHT] or keys[pg.K_d]:
             self.rot_speed = -PLAYER_ROT_SPEED
         if keys[pg.K_UP] or keys[pg.K_w]:
+
+            old_vel=self.vel
             self.vel = vec(PLAYER_SPEED, 0).rotate(-self.rot)
+            # self.update()
+            new_vel=self.vel
+            if old_vel!=new_vel:
+                tot_dist+=3                                                             #for change of pos, add 3. This is to  prevent increase in steps while crashing against the wall
             # print(self.pos)
             # print("self.vel")
             # print(self.vel)
@@ -80,16 +90,19 @@ class Player(pg.sprite.Sprite):
             # # total_dist=vert_dist+hori_dist
             # print("self.game.dt")
             # print(self.game.dt)
-            print("self.pos")
-            print(self.pos)
+            # print("self.pos")
+            # print(self.pos)
             # print("self.pos multiply")
             # print(self.vel*self.game.dt)
-            vert_dist+=abs(self.vel[0])*self.game.dt
-            hori_dist+=self.vel[1]*self.game.dt
-            total_dist=vert_dist+hori_dist
-            print(total_dist)
+            # vert_dist+=abs(self.vel[0])*self.game.dt
+            # hori_dist+=self.vel[1]*self.game.dt
+            # total_dist=vert_dist+hori_dist
+            print(tot_dist)
             align1="bottomright"
-            
+        
+            # temp=self.pos
+        # if temp
+
             #multiply self.vel*self.game.dt
         # if keys[pg.K_DOWN] or keys[pg.K_s]:
         #     self.vel = vec(-PLAYER_SPEED, 0).rotate(-self.rot) #removed/2
@@ -102,6 +115,7 @@ class Player(pg.sprite.Sprite):
     
 
     def update(self):
+        global tott_dist
         self.get_keys()
         self.rot = (self.rot + self.rot_speed * self.game.dt) % 360
         self.image = pg.transform.rotate(self.game.player_img, self.rot)
@@ -112,13 +126,19 @@ class Player(pg.sprite.Sprite):
                 self.damaged = False
         self.rect = self.image.get_rect()
         self.rect.center = self.pos
+
+        # old_pos=self.pos
         self.pos += self.vel * self.game.dt
+        # new_pos=self.pos
+        # if old_pos!=new_pos:
+        #     tott_dist+=3
+        # print(tott_dist)
         self.hit_rect.centerx = self.pos.x
         collide_with_walls(self, self.game.walls, 'x')
         self.hit_rect.centery = self.pos.y
         collide_with_walls(self, self.game.walls, 'y')
         self.rect.center = self.hit_rect.center
-        self.draw_text('Path length:{}'.format(total_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
+        self.draw_text('Path length:{}'.format(tott_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
         pg.display.flip()
 
 
