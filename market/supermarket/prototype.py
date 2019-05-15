@@ -924,6 +924,7 @@ def start1(cart_prot,boolean5):
             # global p
             # global o
             # global goal1
+            # goal1=[]
 
             print("vector")
             # for vector in unique_list_prot:
@@ -937,17 +938,19 @@ def start1(cart_prot,boolean5):
 
             for vector in unique_list_prot:
                 if vector=="Nikon camera":
-                    goal1.append(vec(27,9))
+                    goal1.append(vec(16,18))
                 if vector=="Bleach":
-                    goal1.append(vec(14,9))
+                    goal1.append(vec(37,28))
                 if vector=="Brown bag":
-                    goal1.append(vec(19,70))
+                    goal1.append(vec(9,27))
                 if vector=="7up":
                     goal1.append(vec(3,59))
                 if vector=="Accessories":
                     goal1.append(vec(27,20))
                 if vector=="Aubergine":
                     goal1.append(vec(24,77))
+                if vector=="Avocado":
+                    goal1.append(vec(37,39))
                 if vector=="Balloon skirt":
                     goal1.append(vec(7,8))
                 if vector=="Banana":
@@ -968,6 +971,8 @@ def start1(cart_prot,boolean5):
                     goal1.append(vec(26,77))
                 if vector=="Broom":
                     goal1.append(vec(33,20))
+                if vector=="Brown bread":
+                    goal1.append(vec(13,73))
                 if vector=="Butterscotch toffee":
                     goal1.append(vec(19,47))
                 if vector=="Button mushrooms":
@@ -1134,7 +1139,7 @@ def start1(cart_prot,boolean5):
                     goal1.append(vec(19,79))
                 if vector=="Pumpkin":
                     goal1.append(vec(37,77))
-                if vector=="Rasgulla":
+                if vector=="Rasgulla 500g":
                     goal1.append(vec(3,27))
                 if vector=="Raw honey":
                     goal1.append(vec(15,60))
@@ -1206,7 +1211,7 @@ def start1(cart_prot,boolean5):
                     goal1.append(vec(33,45))
                 if vector=="Yellow cushions":
                     goal1.append(vec(7,38))
-                if vector=="Yellow pilow":
+                if vector=="Yellow pillow":
                     goal1.append(vec(7,56))
                 if vector=="Yellow hotwheels":
                     goal1.append(vec(11,15))
@@ -1214,6 +1219,30 @@ def start1(cart_prot,boolean5):
                     goal1.append(vec(3,18))
                 if vector=="eel fish":
                     goal1.append(vec(16,77))
+                if vector=="Air conditioner":
+                    goal1.append(vec(23,27))
+                if vector=="Coffee maker":
+                    goal1.append(vec(26,32))
+                if vector=="Washing machine":
+                    goal1.append(vec(22,38))
+                if vector=="Rerigerator":
+                    goal1.append(vec(22,32))
+                if vector=="Dishwasher":
+                    goal1.append(vec(19,31))
+                if vector=="Microwave":
+                    goal1.append(vec(13,31))
+                if vector=="TV":
+                    goal1.append(vec(11,33))
+                if vector=="DVD player":
+                    goal1.append(vec(11,39))
+                if vector=="Mobile":
+                    goal1.append(vec(11,45))
+                if vector=="Roller blades":
+                    goal1.append(vec(11,51))
+                if vector=="Sunglasses":
+                    goal1.append(vec(11,56))
+                if vector=="Clock":
+                    goal1.append(vec(11,62))
                
             print(goal1)
             # goal1=[vec(40,9),vec(14,8)]

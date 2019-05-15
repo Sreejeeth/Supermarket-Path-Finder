@@ -66,6 +66,8 @@ class Player(pg.sprite.Sprite):
         global hori_dist
         global tot_dist
         # self.pos
+        # global tot_dist
+        # tot_dist=0
         global total_dist
         self.rot_speed = 0
         self.vel = vec(0, 0)
