@@ -28,7 +28,7 @@ DARKGRAY = (40, 40, 40)
 MEDGRAY = (75, 75, 75)
 LIGHTGRAY = (140, 140, 140)
 # home_img=
-
+ans=2
 # p=6
 # o=6
 # path={}
@@ -45,6 +45,12 @@ LIGHTGRAY = (140, 140, 140)
 unique_list_prot=[]
 boolean2=True
 total_length=0
+
+def dist():
+    global total_length
+    print("total_length in prototype.py")
+    print(total_length)
+    # return total_length
 
 def toggle():
     global boolean2
@@ -1267,9 +1273,10 @@ def start1(cart_prot,boolean5):
                 print(o)
                 print(p)
                 demo()
+                # time.sleep(2)
 
-                draw_text('Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
-                pg.display.flip()
+                # draw_text('Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 65, align="bottomright")
+                # pg.display.flip()
                 if j==o-1:
                     time.sleep(5)
 
@@ -1277,10 +1284,15 @@ def start1(cart_prot,boolean5):
             print("is it ending here?") 
             pg.quit()
             boolean2=False
+            # global ans
+            # ans=dist()
+            # ans=dist()
+            return total_length
 
 
 
 def draw_text(text, size, color, x, y, align="topleft"):
+    global font_name
     font = pg.font.Font(font_name, size)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect(**{align: (x, y)})
@@ -2300,8 +2312,10 @@ def demo():
             # find next in path
             current = current + path[vec2int(current)]
         draw_icons()
+        # draw_text('Total Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 65, align="bottomright")
+        # pg.display.flip()
         draw_text(search_type.__name__, 30, GREEN, WIDTH - 10, HEIGHT - 10, align="bottomright")
-        # draw_text('Path length:{}'.format(l), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
+        draw_text('Path length for the next item:{}'.format(l), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
         # total_length+=l
         # print(total_length)
         # draw_text('Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
@@ -2310,9 +2324,10 @@ def demo():
 
      
     total_length+=l  
+
     print(total_length)  
-    # draw_text('Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
-    # pg.display.flip()
+    draw_text('Total Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 65, align="bottomright")
+    pg.display.flip()
     print(start)
     start=goal
     # if p !=-1:

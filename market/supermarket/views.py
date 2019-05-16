@@ -58,9 +58,12 @@ from cart.cart import Cart
 from supermarket.prototype import *
 
 # from supermarket.examples.pathfinding.prototype import *
+global font_name
+font_name = pg.font.match_font('hack')
 
-
-
+i=0
+dist_of_manual=0
+possible_ans=0
 unique_list=[]
 boolean=True
 boolean1=False
@@ -136,16 +139,29 @@ def help(request):
 
 def home3(request):
     
-    global boolean,boolean5
+    global boolean,boolean5,dist_of_manual
     boolean=True
-
+    global i
     boolean5=True
     cart_2=Cart(request)
-                                                       
-
-    start1(cart_2,boolean5)
-    print("haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalo")
+    global possible_ans
+    global i
+    i=i+1
+    if i==1:                               
+    # possible_ans=const
+        possible_ans=start1(cart_2,boolean5)
+        # possible_ans=const
+        # print(possible_ans)
+        # dist()
+        print("pssobile asnweer")
+        print(possible_ans)
+        print("haaaaaaaaaapossibleaaaaaaaaaaaaaaaaaaaaaaalo")
     boolean5=False
+    print("number in views")
+    dist_of_manual=number()
+    print("ssssssssssssssssssssss")
+    print(dist_of_manual)
+    print(possible_ans)
     pg.quit()
     return render(request,'about.html')
 
@@ -165,9 +181,23 @@ def about(request):
     about_dict = {"about_records":about_list}
     # cart = Cart(request)
     global boolean,boolean5
+    global dist_of_manual
+    global i
     boolean5=True
     boolean=True
     toggle()
+    print("number in views")
+    dist_of_manual=number()
+    print("ssssssssssssssssssssss")
+    print(dist_of_manual)
+    print(possible_ans)
+    print(boolean2)
+    print(i)
+    i=0
+    print(i)
+    global tot_dist
+    tot_dist=0
+    # collect(request)
     # print("caaaaart")
     # # print(cart)
     # global boolean2
@@ -185,7 +215,20 @@ def Tempcart(request):
 
 
 
-
+def compare(request):
+    # global tot_dist
+    global dist_of_manual
+    global possible_ans
+    print("dist_of_manual")
+    print(dist_of_manual)
+    VarA=dist_of_manual
+    VarB=possible_ans
+    dict_compare={
+    'dist_of_manual1': VarA,
+    'possible_ans1': VarB,
+    }
+    # print(tot_dist)
+    return render(request,'compare.html',dict_compare)
 
 def about1(request):
    
@@ -258,6 +301,7 @@ class Game:
     def load_data(self):
         game_folder = ispath.dirname(__file__)
         img_folder = ispath.join(game_folder, 'img')
+        self.title_font = ispath.join(img_folder, 'ZOMBIE.TTF')
         
         self.map_folder = ispath.join(game_folder, 'maps')
         self.dim_screen = pg.Surface(self.screen.get_size()).convert_alpha()
@@ -274,6 +318,8 @@ class Game:
         global cart_lst
         cart_lst=[]
         cart=Cart(request)
+        global tot_dist
+        tot_dist=0
         # req,usable_cart=Tempcart(request)
         self.all_sprites = pg.sprite.LayeredUpdates()
         self.walls = pg.sprite.Group()
@@ -347,6 +393,7 @@ class Game:
             # print("False")
 
         while self.playing:
+            # draw_text('Path length:{}'.format(total_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
             # print("yes")
             self.dt = self.clock.tick(FPS) / 1000.0  # fix for Python 2.x
             self.events(request)
@@ -391,9 +438,15 @@ class Game:
 
                     # if answer=='yes':
                     hit.kill()
+                    # if len(unique_list)
 
 
-
+    def draw_text1(self, text, size, color, x, y, align="topleft"):
+        global font_name
+        font = pg.font.Font(font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect(**{align: (x, y)})
+        self.screen.blit(text_surface, text_rect)  
 
 
     def draw(self):
@@ -412,8 +465,9 @@ class Game:
                 pg.draw.rect(self.screen, CYAN, self.camera.apply_rect(wall.rect), 1)
 
         # pg.draw.rect(self.screen, WHITE, self.player.hit_rect, 2)
-
-        # p.draw_text('Path length:{}'.format(total_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
+        # global total_dist
+        # tdist=number()
+        # self.draw_text1('Path length here:{}'.format(tdist), 30, GREEN, WIDTH - 10, HEIGHT - 85)
         
         # pg.display.flip()
 
@@ -454,11 +508,7 @@ class Game:
     def show_start_screen(self):
         pass
 
-    def draw_text(self, text, font_name, size, color, x, y, align="topleft"):
-        font = pg.font.Font(font_name, size)
-        text_surface = font.render(text, True, color)
-        text_rect = text_surface.get_rect(**{align: (x, y)})
-        self.screen.blit(text_surface, text_rect)    
+  
 
     def show_go_screen(self):
         self.screen.fill(BLACK)
@@ -489,7 +539,8 @@ class Game:
         # self.playing=True
         global boolean
         # boolean=True
-
+        global tot_dist
+        tot_dist=0
         print("Boooooolean in runpgm")
         print(boolean)
         while boolean:
@@ -499,6 +550,8 @@ class Game:
             # self.quit()
             print("111111111111111111111111111111111111111asdasdadasdsadasdadasd")
             print(boolean)
+        # if boolean==False:
+        #     g.show_go_screen()
             # if boolean==False:
             # pg.display.flip()
             # g.show_go_screen()

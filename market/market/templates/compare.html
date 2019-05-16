@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}PathFinder.com{% endblock %}</title>
+    <!-- {% load  %}  -->
+    <!-- Latest compiled and minified CSS -->
+ 
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+<script type="text/javascript">
+  ('.my-select').selectpicker();
+(function () {
+    $('select').selectpicker();
+});
+</script>
+
+
+
+            
+     <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  -->
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<!-- <script src="js/.js"></script> -->
+<!-- <script src="{% static "js/multiple_select_menu.js" %}"></script>
+ <script src="{% static "css/multiple_items.css" %}"></script> -->
+    <!-- <link rel="stylesheet" href="{% static "css/base.css" % }"/> -->
+     <!-- <link rel="stylesheet" href="{% static "js/multiple_select_menu.js" % }"/> -->
+  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <!--    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'> -->
+  </head>
+  <style >
+  body
+  {
+      /* background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg"); */
+      /*background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png"); */
+      background-repeat:no-repeat;
+      background-size:150%;
+  }
+  div
+  {
+
+    align-content: center;
+    top: 50%;
+  }
+  </style>
+  <style>
+  .card {
+      /* Add shadows to create the "card" effect */
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,20);
+      transition: 0.3s;
+  }
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,20);
+  }
+  /* Add some padding inside the card container */
+  .container {
+      padding: 2px 16px;
+  }
+  em {      font-size: 200%;     }
+  </style>
+<body>
+  <p>hi</p>
+
+<div align="center">
+<table class="table-bordered">
+  <tr>
+    <td>Your Path Length</td>
+    <td>Shortest Path</td>
+    
+  <tr>
+  <tr>
+    <td><h3> {{ dist_of_manual1 }} </h3></td>
+    <td><h3>{{ possible_ans1 }}</h3></td>
+
+  </tr>
+  
+</table>
+</div>
+
+<br>
+<br>
+<h1> {{ dist_of_manual1 }} </h1>
+<h1>{{ possible_ans1 }}</h1>
+
+  
+</body>
+</html>

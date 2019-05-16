@@ -12,6 +12,14 @@ tot_dist=0
 vert_dist=0
 hori_dist=0
 total_dist=0
+
+def number():
+    global tot_dist
+    print("number")
+    print(tot_dist)
+    return tot_dist
+
+
 def collide_with_walls(sprite, group, dir):
     if dir == 'x':
         hits = pg.sprite.spritecollide(sprite, group, False, collide_hit_rect)
@@ -51,6 +59,8 @@ class Player(pg.sprite.Sprite):
         self.weapon = 'pistol'
         self.damaged = False
         self.screen = pg.display.set_mode((10+WIDTH, HEIGHT))
+        global tot_dist
+        tot_dist=0
 
 
 
@@ -101,7 +111,8 @@ class Player(pg.sprite.Sprite):
             # total_dist=vert_dist+hori_dist
             print(tot_dist)
             align1="bottomright"
-        
+            
+            number()
             # temp=self.pos
         # if temp
 
@@ -140,7 +151,7 @@ class Player(pg.sprite.Sprite):
         self.hit_rect.centery = self.pos.y
         collide_with_walls(self, self.game.walls, 'y')
         self.rect.center = self.hit_rect.center
-        self.draw_text('Path length:{}'.format(tott_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
+        self.draw_text('Path length:{}'.format(tot_dist), 30, GREEN, WIDTH - 10, HEIGHT - 45)
         pg.display.flip()
 
 
