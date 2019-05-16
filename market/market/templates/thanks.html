@@ -26,7 +26,7 @@
             {% if user.is_authenticated %}
             <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>  logout</a></li>
             <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
-            <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li>
+            <!-- <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li> -->
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
             <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
@@ -35,12 +35,22 @@
 </ul>
 </div>
 </nav>
-    <div class="container" style="height :100% ">
-        <main>
-          {% block content %}
-          {% endblock %}
-        </main>
-      </div>
+
+
+<style>
+         #section1 {padding-top:40px;height:1000px;color: #fff;  background: url('{% static "images/10.png" %}') no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;}
+        
+        </style>
+
+        <div id="section1" class="container-fluid">
+
+</div>
+ </div>
     </div>
   </body>
 </html>
+         

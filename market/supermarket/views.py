@@ -139,6 +139,8 @@ def help(request):
 
 def home3(request):
     
+    #   global dist_of_manual
+    # global possible_ans
     global boolean,boolean5,dist_of_manual
     boolean=True
     global i
@@ -163,7 +165,19 @@ def home3(request):
     print(dist_of_manual)
     print(possible_ans)
     pg.quit()
-    return render(request,'about.html')
+
+
+    print("dist_of_manual")
+    print(dist_of_manual)
+    VarA=dist_of_manual
+    VarB=possible_ans
+    dict_compare={
+    'dist_of_manual1': VarA,
+    'possible_ans1': VarB,
+    }
+    # print(tot_dist)
+    return render(request,'compare.html',dict_compare)
+    # return render(request,'compare.html',)
 
 def product_list(request, category_slug=None):
     category = None
@@ -230,9 +244,9 @@ def compare(request):
     # print(tot_dist)
     return render(request,'compare.html',dict_compare)
 
-def about1(request):
+def thanks(request):
    
-    return render(request,'about1.html')
+    return render(request,'thanks.html')
 
 # global TempCart
 # cart_lst=[]

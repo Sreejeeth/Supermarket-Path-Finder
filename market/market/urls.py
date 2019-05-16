@@ -34,6 +34,7 @@ urlpatterns = [
      url(r'^front2/$', core_views.front2, name='front2'),
       url(r'^virtual/$', core_views.virtual, name='virtual'),
          url(r'^compare/$', core_views.compare, name='compare'),
+                  url(r'^thanks/$', core_views.thanks, name='thanks'),
     # url(r'^logout/$',
     # auth_views.LogoutView,
     # {'next_page': reverse_lazy("dashboard:operations_login")},
