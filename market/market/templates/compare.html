@@ -2,98 +2,95 @@
 {% load static %}
 <html lang="en">
   <head>
-
-
-
-
-
-
-   <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="shortcut icon" href=http://www.freshdesignweb.com/wp-content/themes/fv24/images/icon.ico" />
-
-     <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" media="all"/>
-      <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" media="all"/>
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href=http://www.freshdesignweb.com/wp-content/themes/fv24/images/icon.ico" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" media="all"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" media="all"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <style>
+  .button
+  {
+    align-content: center;
+  }   
+
+  
+  </style>
 
 
  <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
     <div class="container">
             <ul class="nav navbar-nav ">
-              <!-- <li>  <img src="{% static '/images/no_image.png' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
               <li ><label><a class ="navbar-brand " href="{% url 'front2' %}">Home</a></label></li>
-              
-             
-
-</ul>
-<ul class="nav navbar-nav navbar-right">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>  logout</a></li>
-            <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
             <li><a class ="navbar-link"href="{% url 'about' %}">Advantages</a></label></li>
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
             <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
-            <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
             {% endif %}
-</ul>
-</div>
+            </ul>
+    </div>
 </nav>
 <br>
 <br>
+<div id="section1" class="container-fluid">
 
-<div class="container">
-          
+
+<div class="container">      
       <header>
-        <h1>Difference between your try vs Pathfinder's result</h1>
-        <!-- <h1>{{ dist_of_manual1 }}</h1> -->
-            </header>       
-  <header>
-
-
-
-
-<div id="fdw-pricing-table">
-    <div class="plan plan1">
-        <div class="header">Your Try</div>
-        <div class="price"> {{ dist_of_manual1 }} </div>  
-
-            
+        <h1 style="color: #000">Difference between your try vs Pathfinder's result</h1>
+      </header>       
+      <header>
+      <div id="fdw-pricing-table">
+      <div class="plan plan1">
+      <div class="header">Your Try</div>
+      <div class="price"> {{ dist_of_manual1 }} </div>       
         <ul>
-            <li><b>10GB</b> Disk Space</li>
-            <li><b>100GB</b> Monthly Bandwidth</li>
-            <li><b>20</b> Email Accounts</li>
-      <li><b>Unlimited</b> subdomains</li>      
-        </ul>
-               
-    </div>
-    <div class="plan plan2 popular-plan">
+            <li> Traditional method</li>
+            <li> More efforts</li>
+            <li>Takes more time</li>
+            <li> Inefficient</li>      
+        </ul>    
+      </div>
+      <div class="plan plan2 popular-plan">
         <div class="header">PathFinder</div>
         <div class="price">{{ possible_ans1 }}</div>  
-        <!-- <div class="monthly">{{ dist_of_manual1 }} </div>   -->
         <ul>
-            <li><b>5GB</b> Disk Space</li>
-            <li><b>50GB</b> Monthly Bandwidth</li>
-            <li><b>10</b> Email Accounts</li>
-      <li><b>Unlimited</b> subdomains</li>      
-        </ul>
-                   
-    </div>
-      
-</div>
-  </header>
-    
-    <a class ="navbar-link"href="{% url 'thanks' %}"><button type="button" class="btn btn-success">End</button></a>
-<!-- 
-{{ dist_of_manual1 }} 
-{{ possible_ans1 }}
- -->
+            <li> New model</li>
+            <li> Less efforts</li>
+            <li> Reduces time</li>
+            <li>Efficient</li>      
+        </ul>          
+      </div>  
+      <div align="content">
+
+<style>
+button
+        {
+          margin-top: 100px;
+          position: absolute;
+          top: 80%;
+        }
+
+</style>
+
+        
+<img src="{% static '/images/tick.png' %}" alt="Path Finder" style="width:400px;height:400px; margin-top:50px" >
+      </div>
+      </div>
+      </header>
+    <div align="center">
+    <a class ="navbar-link"href="{% url 'thanks' %}"><button type="button"  class="btn btn-success">EXIT</button></a>
+  </div>
 
 </body>
 </html>

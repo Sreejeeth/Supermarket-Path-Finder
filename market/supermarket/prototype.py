@@ -7,7 +7,7 @@ from cart.cart import Cart
 from supermarket.prototype import *
 import time
 
-# screen =pg.display.set_mode((0, 0))
+
 DARKGRAY = (40, 40, 40)
 
 TILESIZE = 10
@@ -27,30 +27,15 @@ YELLOW = (255, 255, 0)
 DARKGRAY = (40, 40, 40)
 MEDGRAY = (75, 75, 75)
 LIGHTGRAY = (140, 140, 140)
-# home_img=
 ans=2
-# p=6
-# o=6
-# path={}
-# goal1=[]
-# cost={}
-# start=vec(20,0)
-# small=100000
-# global g
-# g=WeightedGrid(40,80)
-
-
-# home_img= 
-# arrow={}
 unique_list_prot=[]
 boolean2=True
 total_length=0
 
 def dist():
     global total_length
-    print("total_length in prototype.py")
-    print(total_length)
-    # return total_length
+    # print("total_length in prototype.py")
+    # print(total_length)
 
 def toggle():
     global boolean2
@@ -62,43 +47,21 @@ def start1(cart_prot,boolean5):
     total_length=0
 
     if boolean5==True:
-        # boolean2=True
-
-
-
-
-
-        # global boolean2
-        # boolean2=True
         global cart_lst_prot
         cart_lst_prot=[]
-
-
-        print("cart2")
         for item in cart_prot:
             items=item['product']
-            print("items="+str(items))
+            # print("items="+str(items))
             cart_lst_prot.append(str(items)) 
 
         global unique_list_prot        
-            # unique_list = [] 
-          
-             # traverse for all elements 
         for x in cart_lst_prot: 
         # check if exists in unique_list or not 
             if x not in unique_list_prot: 
                 unique_list_prot.append(x) 
-        # item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
-                                                                   # 'update': True})
-            # print(item)     
-        print("unique_list")
-        print(unique_list_prot)   
         global boolean2
         if boolean2==True:
-            print("start1")
             global p,o,path,goal1,cost,start,small,arrows
-            # p=3
-            # o=3
             p=len(unique_list_prot)
             o=len(unique_list_prot)
             path={}
@@ -106,9 +69,6 @@ def start1(cart_prot,boolean5):
             cost={}
             start=vec(8,0)
             small=100000
-
-
-
             pg.init()
             global screen
             global WIDTH
@@ -921,26 +881,7 @@ def start1(cart_prot,boolean5):
             for wall in walls:
                 g.walls.append(vec(wall))
 
-
-            # path={}
-
             c={}
-            # p=6
-            # o=6
-            # global p
-            # global o
-            # global goal1
-            # goal1=[]
-
-            print("vector")
-            # for vector in unique_list_prot:
-            #     if vector=="Nikon camera":
-            #         goal1.append(vec(27,9))
-            #     if vector=="Bleach":
-            #         goal1.append(vec(14,9))
-            #     if vector=="Brown bag":
-            #         goal1.append(vec(19,70))
-
 
             for vector in unique_list_prot:
                 if vector=="Nikon camera":
@@ -978,7 +919,7 @@ def start1(cart_prot,boolean5):
                 if vector=="Broom":
                     goal1.append(vec(33,20))
                 if vector=="Brown bread":
-                    goal1.append(vec(13,73))
+                    goal1.append(vec(13,74))
                 if vector=="Butterscotch toffee":
                     goal1.append(vec(19,47))
                 if vector=="Button mushrooms":
@@ -1250,9 +1191,7 @@ def start1(cart_prot,boolean5):
                 if vector=="Clock":
                     goal1.append(vec(11,62))
                
-            print(goal1)
-            # goal1=[vec(40,9),vec(14,8)]
-            # global start
+            
             start = vec(8, 0)
             search_type = a_star_search
 
@@ -1270,23 +1209,14 @@ def start1(cart_prot,boolean5):
 
             # global o
             for j in range(o):
-                print(o)
-                print(p)
                 demo()
-                # time.sleep(2)
-
-                # draw_text('Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 65, align="bottomright")
-                # pg.display.flip()
                 if j==o-1:
                     time.sleep(5)
 
 
-            print("is it ending here?") 
+            # print("is it ending here?") 
             pg.quit()
             boolean2=False
-            # global ans
-            # ans=dist()
-            # ans=dist()
             return total_length
 
 
@@ -1335,69 +1265,26 @@ class WeightedGrid(SquareGrid):
         super().__init__(width, height)
         self.weights = {}
 
-    # def new(self):
-    #     self.camera = Camera(self.width, self.height)
-
-    # def update(self):
-    #     # update portion of the game loop
-    #     # self.all_sprites.update()
-    #     global goal_center
-    #     self.camera.update(goal_center)
-        
-
     def cost(self, from_node, to_node):
         if (vec(to_node) - vec(from_node)).length_squared() == 1:
-            # num= self.weights.get(to_node, 0) + 10
-            # return num/32
+
             num= self.weights.get(to_node, 0) + 10
             return num
         else:
-            # num= self.weights.get(to_node, 0) + 14
-            # return num/32
+
             num= self.weights.get(to_node, 0) + 14
             return num
     def draw(self):
-        # self.screen.blit(self.map_img, self.camera.apply(self.map))
-        # g=Camera()
-        # self.new()
-        # self.update()
+
         for wall in self.walls:
             rect = pg.Rect(wall * TILESIZE, (TILESIZE, TILESIZE))
             pg.draw.rect(screen, LIGHTGRAY, rect)
-            # if walls[1][1]==7:
-            # broom_center = (vec(22,8).x * TILESIZE + TILESIZE / 2, vec(22,8).y * TILESIZE + TILESIZE / 2)
-            # screen.blit(broom_img, broom_img.get_rect(center=broom_center))
 
-            # bucket_center = (vec(21,7).x * TILESIZE + TILESIZE / 2, vec(21,7).y * TILESIZE + TILESIZE / 2)
-            # screen.blit(bucket_img, bucket_img.get_rect(center=bucket_center))
             
         for tile in self.weights:
             x, y = tile
             rect = pg.Rect(x * TILESIZE + 3, y * TILESIZE + 3, TILESIZE - 3, TILESIZE - 3)
             pg.draw.rect(screen, FOREST, rect)
-
-    # def new(self):
-    #     self.camera = Camera(self.map.width, self.map.height)
-
-    # def update(self):
-    #     # update portion of the game loop
-    #     # self.all_sprites.update()
-    #     self.camera.update(self.player)
-    #     # hits = pg.sprite.spritecollide(self.player, self.items, False)
-    # def draw(self):
-    #     # pg.display.set_caption("{:.2f}".format(self.clock.get_fps()))
-    #     # self.screen.fill(BGCOLOR)
-    #     self.screen.blit(self.map_img, self.camera.apply(self.map))
-    #     # self.draw_grid()
-    #     for sprite in self.all_sprites:
-    #         # print(sprite.image)# i think this constantly changes the position of the player(sprite)
-    #         self.screen.blit(sprite.image, self.camera.apply(sprite))
-    #         if self.draw_debug:
-    #             pg.draw.rect(self.screen, CYAN, self.camera.apply_rect(sprite.hit_rect), 1)
-    #     if self.draw_debug:
-    #         for wall in self.walls:
-    #             pg.draw.rect(self.screen, CYAN, self.camera.apply_rect(wall.rect), 1)
-
 
 class PriorityQueue:
     def __init__(self):
@@ -2208,7 +2095,7 @@ def dijkstra_search(graph, start, end):
 def cal_cost(goal_para,path_para):
 
 
-    global goal_final  #doubtful
+    global goal_final 
     global small  
 
     global start
@@ -2231,17 +2118,14 @@ def cal_cost(goal_para,path_para):
         small=l
 
         goal_final=goal_para
-        # print("goal_final")
-        # print(goal_final)
+
 
     return small
 
 
 def demo():
     search_type = a_star_search
-    # small=100000
     global total_length
-    # global total_length
     global arrows
     global small
     global p
@@ -2256,9 +2140,6 @@ def demo():
         small=cal_cost(gg,pp)
 
     goal=goal_final
-    # print("goal")
-    # print(goal)
-
 
     global start
 
@@ -2283,8 +2164,6 @@ def demo():
                     # dump the wall list for saving
                     print([(int(loc.x), int(loc.y)) for loc in g.walls])
 
-
-        # pg.display.set_caption("{:.2f}".format(clock.get_fps()))
         screen.fill(DARKGRAY)
         # fill explored area
         for node in path:
@@ -2312,31 +2191,30 @@ def demo():
             # find next in path
             current = current + path[vec2int(current)]
         draw_icons()
-        # draw_text('Total Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 65, align="bottomright")
-        # pg.display.flip()
+
         draw_text(search_type.__name__, 30, GREEN, WIDTH - 10, HEIGHT - 10, align="bottomright")
         draw_text('Path length for the next item:{}'.format(l), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
-        # total_length+=l
-        # print(total_length)
-        # draw_text('Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 45, align="bottomright")
+
         pg.display.flip()
 
 
      
     total_length+=l  
 
-    print(total_length)  
+    # print(total_length)  
     draw_text('Total Path length:{}'.format(total_length), 30, GREEN, WIDTH - 10, HEIGHT - 65, align="bottomright")
     pg.display.flip()
-    print(start)
+    # print(start)
     start=goal
-    # if p !=-1:
     goal1.remove(goal)
         
-    print(goal)
-    print(goal1)
+    # print(goal)
+    # print(goal1)
 
     if len(goal1)<0:
+        # start=goal
+        # goal=vec(0,38)
+        
         pg.quit()
         running=False
         # exit(0)

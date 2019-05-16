@@ -12,11 +12,13 @@ tot_dist=0
 vert_dist=0
 hori_dist=0
 total_dist=0
+# old=[0,0]
+# new=[0,0]
 
 def number():
     global tot_dist
-    print("number")
-    print(tot_dist)
+    # print("number") 
+    # print(tot_dist)
     return tot_dist
 
 
@@ -75,6 +77,7 @@ class Player(pg.sprite.Sprite):
         global vert_dist
         global hori_dist
         global tot_dist
+        # global old
         # self.pos
         # global tot_dist
         # tot_dist=0
@@ -91,44 +94,34 @@ class Player(pg.sprite.Sprite):
             old_vel=self.vel
             self.vel = vec(PLAYER_SPEED, 0).rotate(-self.rot)
             # self.update()
-            new_vel=self.vel
-            if old_vel!=new_vel:
-                tot_dist+=3                                                             #for change of pos, add 3. This is to  prevent increase in steps while crashing against the wall
-            # print(self.pos)
-            # print("self.vel")
-            # print(self.vel)
-            # vert_dist+=1.5
-
-            # # total_dist=vert_dist+hori_dist
-            # print("self.game.dt")
-            # print(self.game.dt)
-            # print("self.pos")
-            # print(self.pos)
-            # print("self.pos multiply")
-            # print(self.vel*self.game.dt)
-            # vert_dist+=abs(self.vel[0])*self.game.dt
-            # hori_dist+=self.vel[1]*self.game.dt
-            # total_dist=vert_dist+hori_dist
+            old=self.pos[0]
+            old1=self.pos[1]
+            
+            self.pos += self.vel * self.game.dt
+            new=self.pos[0]
+            new1=self.pos[1]
+            print(old)
+            print(new)
+            print((old!=new))
+            # if((old!=new) and (old1!=new1)):
+            tot_dist+=3
             print(tot_dist)
+            # new_vel=self.vel
+            # if old!=new_vel:
+                # tot_dist+=3
+            # print("Self pos")                                                             #for change of pos, add 3. This is to  prevent increase in steps while crashing against the wall
+            # print(self.pos)
+            # print(tot_dist)
             align1="bottomright"
             
             number()
-            # temp=self.pos
-        # if temp
 
-            #multiply self.vel*self.game.dt
-        # if keys[pg.K_DOWN] or keys[pg.K_s]:
-        #     self.vel = vec(-PLAYER_SPEED, 0).rotate(-self.rot) #removed/2
-        #     # dist+=self.pos[0]
-        #     vert_dist=self.pos[0]
-        #     total_dist=vert_dist+hori_dist
-        # total_dist=vert_dist+hori_dist
-        # print("total_dist")
-        
-    
 
     def update(self):
         global tott_dist
+        global tot_dist
+        # global old
+       
         self.get_keys()
         self.rot = (self.rot + self.rot_speed * self.game.dt) % 360
         self.image = pg.transform.rotate(self.game.player_img, self.rot)
@@ -139,13 +132,8 @@ class Player(pg.sprite.Sprite):
                 self.damaged = False
         self.rect = self.image.get_rect()
         self.rect.center = self.pos
-
-        # old_pos=self.pos
-        self.pos += self.vel * self.game.dt
-        # new_pos=self.pos
-        # if old_pos!=new_pos:
-        #     tott_dist+=3
-        # print(tott_dist)
+        # self.pos += self.vel * self.game.dt
+       
         self.hit_rect.centerx = self.pos.x
         collide_with_walls(self, self.game.walls, 'x')
         self.hit_rect.centery = self.pos.y

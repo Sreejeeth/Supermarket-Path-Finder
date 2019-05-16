@@ -12,29 +12,22 @@
   </head>
 
 <body>
-
   <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
     <div class="container">
-            <ul class="nav navbar-nav ">
-              <!-- <li>  <img src="{% static '/images/no_image.png' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
-              <li ><label><a class ="navbar-brand " href="{% url 'front2' %}">Home</a></label></li>
-              
-             
-
-</ul>
-<ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav ">
+         <li ><label><a class ="navbar-brand " href="{% url 'front2' %}">Home</a></label></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>  logout</a></li>
-            <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
-            <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li>
+            <!-- <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li> -->
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
             <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
-            <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
             {% endif %}
-</ul>
-</div>
-</nav>
+      </ul>
+    </div>
+  </nav>
 
 
 <style>
@@ -44,15 +37,22 @@
          -o-background-size: cover;
          background-size: cover;}
         
-        </style>
+
+button
+        {
+          margin-top: 100px;
+          position: absolute;
+          top: 80%;
+        }
+
+</style>
 
         <div id="section1" class="container-fluid">
-   <div style="text-align: center;"> 
- <a class ="navbar-link"href="{% url 'compare' %}"><button type="button" class="btn btn-success">Back</button></a>
- </div>
- 
-</div>
- </div>
+        <div style="text-align: center;"> 
+            <a class ="navbar-link"href="{% url 'compare' %}"><button type="button" class="btn btn-success">Back</button></a>
+        </div>
+        </div>
+    </div>
     </div>
   </body>
 </html>

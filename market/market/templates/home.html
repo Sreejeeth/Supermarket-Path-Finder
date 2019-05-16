@@ -38,57 +38,10 @@
 }
 
 </style>
-
-
-            
-     <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  -->
-<!-- <link rel="stylesheet" href="css/style.css"> -->
-<!-- <script src="js/.js"></script> -->
-<!-- <script src="{% static "js/multiple_select_menu.js" %}"></script>
- <script src="{% static "css/multiple_items.css" %}"></script> -->
-    <!-- <link rel="stylesheet" href="{% static "css/base.css" % }"/> -->
-     <!-- <link rel="stylesheet" href="{% static "js/multiple_select_menu.js" % }"/> -->
-  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-  <!--    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'> -->
   </head>
-  
-
-  <!-- <style >
-  body
-  {
-      /* background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg"); */
-      /* background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png"); */
-      background-repeat:no-repeat;
-      background-size:150%;
-      background-color: #ffffff;
-
-  }
-  </style>
-  <style>
-  .card {
-      /* Add shadows to create the "card" effect */
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,20);
-      transition: 0.3s;
-      font-size: 20px;
-  }
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,20);
-  }
-  /* Add some padding inside the card container */
-  .container {
-      padding: 2px 16px;
-  }
-  em {      font-size: 200%;     }
-  </style> -->
-
-
+ 
 <style>
-        em {      font-size: 200%;     }
+        em {font-size: 200%;     }
         body{
             margin: 0;
             padding: 0;
@@ -107,12 +60,6 @@
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-size: cover;
-            /*-webkit-filter: blur(5px);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(5px);*/
         }
         .bgform
         {
@@ -196,7 +143,6 @@
  <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
     <div class="container">
             <ul class="nav navbar-nav ">
-              <!-- <li>  <img src="{% static 'images/sirmvit.jpg' %}" alt="Path Finder" style="width:50px;height:50px;"></li> -->
               <li ><label><a class ="navbar-brand " href="{% url 'front2' %}">Home</a></label></li>
               
              
@@ -205,8 +151,8 @@
 <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>logout</a></li>
-            <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
-                  <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li>
+            <!-- <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li> -->
+                  <li><a class ="navbar-link"href="{% url 'about' %}">Advantages</a></label></li>
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
             <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
@@ -215,31 +161,7 @@
 </ul>
 </div>
 </nav>
- 
 
-
-
-  <!-- <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
-      <div class="container">
-            <ul class="nav navbar-nav ">
-              <li>  <img src="{% static "images/sirmvit.jpg" %}" alt="PathFinder" style="width:50px;height:50px;"></li>
-              <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-               {% if user.is_authenticated %}
-              <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>logout</a></li>
-              <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
-              <li><a class ="navbar-link"href="{% url 'about' %}">About</a></label></li>
-               {% else %}
-               <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
-               <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
-               <li><a class ="navbar-link"href="{% url 'home2' %}">Game</a></label></li>
-              {% endif %}
-
-            </ul>
-    </div>
-  </nav>
-   -->
 <div class="pull-right" >
     {% with total_items=cart|length %}
         {% if cart|length > 0 %}
@@ -259,74 +181,16 @@
 <h1 align="center" style="color:#000000"><em>Categories</em></h1>
 <br>
 <br>
-        <!-- <div class="row">
-            <div class="col s10  m4">
-              <div class="card black darken-1">
-                <div class="card-content white-text">
-                  <span class="card-title"><h1  {% if not category %}class="selected"{% endif %}>
-                      <a class="navbar-link" href="{% url "product_list" %}" > All</a>
-                  </h1>
-                </span>
-            </div>
-          </div>
-        </div> -->
-
+ 
   {% for c in categories %}
               <div class="btn-group">
                 <h1 {% if category.slug == c.slug %}class="selected"{% endif %}>
                    <a href="{{ c.get_absolute_url }}"><button type="button" class="button button5 btn btn-primary " style="height:80px;width:300px"><h2>{{c.name}}</h2></button></a>
-            </h1>
-                <!-- <button><a href="{{ c.get_absolute_url }}">{{c.name}}</a></button> -->
+                 </h1>
               </div>
-
-
-              <!-- <div class="col s10  m4">
-                <div class="card black darken-1">
-                  <div class="card-content white-text">
-                    <span class="card-title"><h1 {% if category.slug == c.slug %}class="selected"{% endif %}>
-                        <a href="{{ c.get_absolute_url }}">{{c.name}}</a>
-
-                    </h1>
-                  </span>
-                  </div>
-                </div>
-              </div>
- -->
     {% endfor %}
     </div>
   </div>
-<!-- <div class="container">
- 
-
-  <section>
-    <p>Preselected</p>
-    <select multiple="multiple" id="myMulti">
-      <option>Item 1</option>
-      <option>item 2</option>
-      <option>item 3</option>
-      <option>item 4</option>
-      
-    </select>
-  </section>
-</div> -->
-
-<!-- <select class="selectpicker" multiple data-live-search="true">
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-</select>  -->
 
 
 
