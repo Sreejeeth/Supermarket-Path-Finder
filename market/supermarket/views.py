@@ -66,6 +66,8 @@ dist_of_manual=0
 def ini():
     global no_of_items
     no_of_items=0
+
+
 possible_ans=0
 unique_list=[]
 boolean=True
@@ -297,6 +299,7 @@ class Game:
     def run(self,request):
         # game loop - set self.playing = False to end the game
         self.playing = True
+        # global no_of_items
         global boolean
         if boolean==False:
             self.playing=False
@@ -307,6 +310,8 @@ class Game:
             # print("Flag")
             if not self.paused:
                 self.update()
+                # no_of_items=0
+
             self.draw()
 
     def quit(self):
@@ -320,24 +325,29 @@ class Game:
 
     def update(self):
         # update portion of the game loop
+        # ini()
         global no_of_items
         global unique_list
-        ini()
+        
         global boolean
         u=len(unique_list)
         self.all_sprites.update()
         self.camera.update(self.player)
         hits = pg.sprite.spritecollide(self.player, self.items, False)
         # global unique_list
+
         for hit in hits:
             for thing in unique_list:
 
                 if hit.type == thing:
                     window=Tk()                    
-                    window.withdraw()      
+                    window.withdraw() 
+                    print("no of items")  
+                    print(no_of_items)   
+                    print(len(unique_list)-no_of_items)
                     no_of_items+=1
                     u=u-1                
-                    messagebox.showinfo("Cart", "Adding item to card. {} item collected. {} items left to buy ".format(no_of_items,len(unique_list)-no_of_items))
+                    messagebox.showinfo("Cart", "Adding items to card. {} item collected. {} items left to buy ".format(no_of_items,len(unique_list)-no_of_items))
                     # if no_of_items==len(unique_list):
                         # self.show_go_screen()
                         # pg.quit()
@@ -348,7 +358,7 @@ class Game:
                     window.destroy()
                     window.quit()
                     hit.kill()
-
+        # no_of_items=0   
 
     def draw_text1(self, text, size, color, x, y, align="topleft"):
         global font_name
@@ -458,6 +468,7 @@ class Game:
         g = Game()
         g.show_start_screen()
         global boolean
+        ini()
         global tot_dist
         tot_dist=0
         while boolean:

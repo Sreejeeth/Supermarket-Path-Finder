@@ -535,6 +535,5 @@
   <object id="213" name="Sunglasses" x="368" y="1809.33"/>
   <object id="214" name="Clock" x="366.667" y="2001.33"/>
   <object id="218" name="wall" x="955.639" y="670.896" width="95.6674" height="158.32" rotation="89.4546"/>
-  <object id="220" name="wall" x="425.667" y="685.333" width="45.6667" height="45.333"/>
  </objectgroup>
 </map>

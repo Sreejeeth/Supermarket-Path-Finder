@@ -221,6 +221,17 @@ ITEM_IMAGES = {'Cheese Block': 'bullet.png',
                'Lavender': 'bullet.png',
                'Accessories': 'bullet.png',
                'Cold cream': 'bullet.png',
+               'Air conditioner': 'bullet.png',
+               'Coffee maker': 'bullet.png',
+               'DVD player': 'bullet.png',
+               'Microwave': 'bullet.png',
+               'Dishwasher': 'bullet.png',
+               'Refrigerator': 'bullet.png',
+               'Roller blades': 'bullet.png',
+               'Sunglasses': 'bullet.png',
+               'Clock': 'bullet.png',
+               'TV': 'bullet.png',
+               'Mobile': 'bullet.png',
 
 
 
